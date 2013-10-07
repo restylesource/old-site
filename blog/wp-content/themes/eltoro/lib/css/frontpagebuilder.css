@@ -1,0 +1,87 @@
+#invisible-fixed-point{ position:fixed; top:3%; left:12%; width:1px; height:1px; visibility: hidden; }
+#the-closet { display: none; }
+.fpb{ width: auto; height:25px; line-height: 25px; padding: 3px 15px; display: inline-block; }
+	.title.fpb{ width:auto; padding: 0; }
+	.fpb a{ text-decoration: none; }
+	.fpb .fpb_label{ float:left; display:inline-block; color: #333; font-weight: bold; }
+
+.fpb_icon { float:left;display:inline-block; width:24px; height:24px; }
+.add_fpb .fpb_icon { background: transparent url( ../images/backend.png ) no-repeat 0px -576px; margin-right:10px; margin-top: 5px; height: 16px; width: 16px; }
+
+#element-builder-shadow{ display: none; }
+#element-builder-shadow.block{ position:fixed; left:0px; right:0px; top:0px; bottom:0px; display: block; width:100%; height:100%; background: black; opacity: 0.8; z-index:998; }
+
+#elements-container { border: none; margin:15px 0; width:700px; }
+	#elements-container .on-overview { width:100%; height:80px; }
+		#elements-container .on-overview .undo-container{ display:none; margin:10px; }
+		#elements-container .on-overview header { padding:5px 10px; max-height: 50%; }
+        #elements-container .on-overview p { position:absolute; left:10px; top:50%; }
+
+.element-container { position: relative; background-color:white; border:1px solid black; border-radius:6px; margin: 0 0 20px 0; }
+	.element-container .on-edit { display: none; }
+	.element-container.editing { position:fixed!important; z-index:999; padding:10px; left:12%; top:12%; width:75%; height:75%; opacity:1; }
+	.element-container.editing .on-overview { display:none; }
+	.element-container.editing .on-edit { display:block; }
+
+
+	.element-container header{ position: absolute; top:0px; left:0%; right:0%; padding:15px 20px 10px 20px; background-color:#495769; border-top-left-radius:5px; border-top-right-radius:5px; }
+		.element-container header span { float:left; text-align: left }
+		.element-container header span.add_fpb a.fpb_label{ color: white; }
+			.element-container .fr { float:right; }
+			.element-container header span.discard{ width:130px; }
+			.element-container header .fpb_icon{ margin-right:10px; margin-top: 5px; }
+				.element-container header .preview .fpb_icon{ background: transparent url( ../images/backend.png ) no-repeat 0px -560px; height: 16px; width: 16px; }
+				.element-container header .preview, .element-container header .apply { margin-left: 10px;}
+				.element-container header .preview:hover { background-position: left -30px }
+				.element-container header .preview.active { background-position: left -60px;}
+				.element-container header .apply .fpb_icon{ background: transparent url( ../images/backend.png ) no-repeat 0px -528px; height: 16px; width: 16px; }
+				.element-container header .discard .fpb_icon, .element-container header .delete .fpb_icon{ background: transparent url( ../images/backend.png ) no-repeat 0px -512px; height: 16px; width: 16px; }
+				.element-container header .delete, .element-container header .edit { width:auto; padding: 0 15px; margin-left: 10px;}
+					.element-container header .edit .fpb_icon{ background: transparent url( ../images/backend.png ) no-repeat 0px -496px; height: 16px; width: 16px; }
+						.element-container.newborn .on-edit header .title .fpb_icon{ background: transparent url( ../images/add_element.png ) no-repeat 0px 0px; margin-right:10px; }
+				.element-container .on-overview header .title, .element-container .on-overview header .title a { cursor:move; color: white;}
+					.element-container .on-overview header .title .fpb_icon{ background: transparent url( ../images/backend.png ) no-repeat 0 -544px; height: 16px; width: 16px; }
+					.element-container .on-edit header .title .fpb_icon{ }
+                    .element-container .on-edit .iframe-wrapper{ position: absolute; top:-200%; bottom:200%; left:10px; right:10px; overflow: hidden; }
+                    .element-container .on-edit iframe{ position:absolute; width:100%; height:100%; overflow: scroll; }
+					.element-container .on-edit .panel{ position: absolute; bottom:10px; right:10px; left:10px; top:70px; overflow-y: scroll; overflow-x:hidden; }
+						.element-container .option-numberposts .generic-field, .element-container .generic-field-front_page .generic-field{ clear:both; }
+						.element-container .on-edit .panel .generic-field-image-select { clear:left; width:auto; margin-top: 5px; }
+							.element-container .on-edit .panel input { border-radius: 5px; width:200px; border: 1px solid #ABABAB; margin: 10px 0; height: 20px; }
+							.element-container .on-edit .panel .generic-field-image-select input { display: none; }
+							.element-container .on-edit .panel .generic-field-image-select label { float:left; margin-right:5px; margin-bottom: 10px; display:block; max-height:30px; overflow:hidden; padding:5px 15px; text-align:center; border:outset 1px #CECECE; border-radius: 0; background: #F2F2F2 url(../images/beautiful_checkbox.png) repeat-x scroll left top }
+							.element-container .on-edit .panel .generic-field-image-select label:hover { background-position: left -30px }
+							.element-container .on-edit .panel .generic-field-image-select label.selected { background-position: left -60px; border:outset 1px #CECECE; background-color:transparent; }
+
+#elements-container>.placeholder { height: 82px; border:1px solid transparent; border-radius: 6px; margin: 0 0 20px 0; }
+.panel .fly-left { position:absolute; left: 100%; width:30%; height:90%; opacity: 0;  border-radius:6px; border:outset 1px #ABABAB; background:white; }
+	.fly-left .content{ overflow-y:scroll; overflow-x:hidden; position: absolute; top:20px; right:5px; left:5px; bottom:20px; padding-top:30px; }
+        .fly-left .search-holder { background: white; position: absolute; top:10px; right:30px; left:10px; z-index:1000; height:30px; padding-bottom:5px; }
+            .fly-left input.search { width:auto!important; position: absolute; left:10px; right:60px; font-family:sans-serif; display:block; background: transparent; text-indent: 5px;  }
+            .fly-left a.clear-input { position: absolute; right:65px; top: 15px; display:block; width:16px; height:16px; background: transparent url( ../images/backend.png ) no-repeat 0 -592px; float:left; }
+            .fly-left a.back-to-top { position: absolute; right:0px; top: 15px; display:block; width:16px; height:16px; background: transparent url( ../images/backend.png ) no-repeat 0 -608px; float:left; }
+        .fly-left.taxonomies p, .fly-left.taxonomies .taxonomy, .fly-left.taxonomies .placeholder{ height:15px; margin-top: 10px; clear:both; padding-left:36px; }
+        .fly-left.taxonomies .taxonomy, .fly-left.taxonomies .placeholder{ cursor: pointer; }
+        .fly-left.taxonomies p { font-style: italic; }
+			.taxonomy { display: block; }
+				.taxonomy.added, .taxonomy:hover{ background: transparent url( ../images/add_icon.png ) no-repeat 10px -5px; }
+				.taxonomy.added:hover { background: transparent url( ../images/minus_icon.png ) no-repeat 10px -5px; }
+					.taxonomy input{ display: none; }
+
+        .pages.fly-left .taxonomy.added, .pages.fly-left .taxonomy:hover, .posts.fly-left .taxonomy.added, .posts.fly-left .taxonomy:hover{ background: transparent url( ../images/checked.png ) no-repeat 10px -5px; }
+            .pages.fly-left .taxonomy.added:hover, .posts.fly-left .taxonomy.added:hover { background: inherit; }
+
+.widgets.fly-left { width: 35%; border:none; }
+	.widgets.fly-left ol{ margin-left: 0px; font-size: 12px; }
+	.widgets.fly-left .content { overflow: hidden; top: -10px; }
+		.widgets.fly-left .content ol { margin-left: 0; font-size:12px; line-height: 17px; }
+
+.element-container .standard-generic-field { float:left; clear:both; max-width: 50% }
+.generic-label { font-weight: bold; }
+
+
+
+.element-container header .discard{ display:none; }
+	.element-container.newborn header .discard{ display:block; padding: 3px 10px; width: auto; margin-left: 10px; }
+
+.option-numberposts .hint{ clear:both; font-style:italic; color:gray; }

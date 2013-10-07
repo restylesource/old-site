@@ -1,0 +1,21 @@
+@media only screen and (min-width: 990px) and (max-width: 1250px) {
+	#searchform input[type="text"]{ width: 100% !important;float: none;}
+	#searchform .button{ width: 100%;}
+	#searchbox .right{float: none !important;}
+	#page{padding: 30px 10px 0 10px !important; position: relative;overflow:hidden;}
+	.cosmo-icons > ul:first-child > li, .cosmo-icons > ul:first-child > li:first-child{padding: 0px 10px !important;}
+	#menu-login .sf-menu > li.signin, #menu-login .sf-menu > li.signin:first-child{padding: 0px 0px !important;}
+	#menu-login .cosmo-icons .sf-menu{max-width:10em !important;}
+	#menu-login .cosmo-icons .sf-menu ul li{padding: 5px 0 !important;}
+	#menu-login .cosmo-icons .sf-menu ul li a{font-size: 10px !important;margin: 0 2px;}
+	#menu-login .cosmo-icons .sf-menu li:hover ul, .sf-menu li.sfHover ul { right: 0px !important; /* match top ul list item height */ z-index: 99; }
+	#menu-login .cosmo-icons .sf-menu li.sfHover:first-child ul { right: 0 !important;}
+	.flickr_badge_image.last{margin: 0 6px 0 0 !important;}
+	.cosmo-twit-container .cosmo_twitter p{ margin:0; max-width: 145px !important;}
+	.keyboard-demo{display: none !important;}
+	.widget_tabber .tabs-container ul li .entry-item {width: 85px !important;}
+	.large .widget_latest_posts ul li .entry-item{width: 145px !important;}
+	.cosmo-testimonials ul li { width: 210px !important;}
+	#colophon{margin: 0 -10px !important;}
+	.demo-tooltip{display: none;}
+}

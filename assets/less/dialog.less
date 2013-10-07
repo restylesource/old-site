@@ -1,0 +1,91 @@
+// =================================
+//
+//   jQuery UI Dialog
+//
+// =================================
+
+.ui-dialog { position:absolute; top:0; background:white; .box-shadow(0 0 5px rgba(0,0,0,.3)); }
+.ui-dialog-title { display:none; }
+.ui-icon-closethick { display:block; position:absolute; right:20px; top:20px; width:24px; height:24px; background:@color-primary; .border-radius(100%); color:white; text-indent:-9999px; cursor:pointer; z-index:1;
+	&:before { content:"✕"; display:block; position:absolute; left:0; right:0; top:0; bottom:0; line-height:26px; color:white; z-index:1; text-indent:0; text-align:center; .font-headline(); font-size:0.875em; }
+	&:hover:before { opacity:.75; }
+}
+.ui-widget-overlay { position:fixed; top:0; right:0; bottom:0; left:0; background:rgba(0,0,0,.75); }
+.ui-dialog-content { padding:10px; overflow:hidden; overflow-y:auto; -webkit-transform:translateZ(0); }
+.loading { background:url(../images/ajax-loading.gif) center center no-repeat; }
+
+// Loading
+.ajax-loading-indicator { position:absolute; top:0; right:0; top:0; bottom:0; left:0; background:white url(../images/ajax-loader.gif) center center no-repeat; z-index:50000; }
+
+// Error message
+.ui-dialog .error { margin-bottom:0; color:#ec1d1d; .font-headline(); text-transform:uppercase; font-weight:bold; }
+
+.dialogAjax { background:#d9d7d3;
+
+	.ui-dialog-content { background:#d9d7d3; padding:25px;
+		h1 { margin-top:0.25em; margin-bottom:0; color:white; text-transform:uppercase; line-height:1.2; }
+		h2 { margin-top:0; margin-bottom:1.5em; .font-alexandria(); font-weight:100; line-height:1.4; 
+			&:after { content:""; display:block; position:absolute; right:0; left:0; border-bottom:1px dotted @color-primary; padding-bottom:0.5em; zoom:1;
+				.ie9 & { display:none; }
+			}
+		}
+		.dialog-content { position:relative; margin:3em 0 1em; .clearfix(); }
+		.buttonset { position:absolute; right:0; bottom:0; }
+		
+		// Override dropdown styling
+		div.selector { float:left;
+			span { background:white; }
+			select { z-index:1500; }
+
+			// Arrow
+			&:after { border-left-color:#d9d7d3; }
+		}
+	}
+
+	// Buttons
+	.ui-dialog-buttonset { padding:0; background:transparent; position:absolute; right:25px; bottom:2.5em; }
+	.button { cursor:pointer; display:inline-block; padding:0.25em 0.5em; text-transform:none; font-weight:bold; border:none; font-family:"DIN",sans-serif; font-size:0.875em; cursor:pointer; text-transform:uppercase;
+		&.primary { margin-right:8px; background:@color-link-bright; color:white; outline:none; 
+			&:hover { background:darken(@color-link-bright,10%); }
+		}
+		&.cancel { background:#ccc; color:#666; 
+			&:hover { background:#aaa; }
+		}
+	}
+	
+	.ui-dialog-buttonset { bottom:1.5em; }
+
+	// Location dialog
+	&.location {
+		.ui-dialog-buttonset { bottom:2.5em; }		
+	}
+
+	// Home what is restyle
+	&.what-is-restyle {
+		.dialog-content { margin-bottom:3em; }
+	}
+
+	// Search
+	&.search {
+		.ui-dialog-buttonset { bottom:2.7em; }
+		div.selector { margin-left:20px; margin-bottom:20px;
+			&:first-child { margin-left:0; }
+			span { width:158px; font-size:1em; }
+		}
+		input[type="text"] { width:395px; }
+		.button.primary { margin-right:0; }
+	}
+
+	// Product email
+	&.product-email {
+		img { float:left; margin-right:1em; }
+	}
+}
+
+
+@media only screen and (max-device-width : 500px) {
+	.ui-icon-closethick { top:10px; right:10px; }
+	.ui-dialog, .ui-dialog-content { width:100% !important; height:auto !important; overflow:hidden !important; }
+	.ajax-content-wrapper { width:90% !important; height:auto !important; background:transparent !important; padding:0 !important; margin:0 !important; }
+
+}

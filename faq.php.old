@@ -1,0 +1,100 @@
+<?
+
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.php';
+
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en-us" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-us" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-us" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-us" class="no-js"> <!--<![endif]-->
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+
+	<title><? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/title.php'); ?> | FAQs</title>
+
+	<!-- 
+	CSS
+	-->
+	<!--[if !IE 6]><!-->
+	<link rel="stylesheet" media="screen, projection" href="/assets/css/main.css" />
+	<!--<![endif]-->
+	<!--[if lte IE 6]><link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection"><![endif]-->
+
+	<!--
+	FAVICON
+	--> 
+	<link rel="shortcut icon" href="/assets/images/favicon.gif" type="image/gif" /> 
+
+	<!-- 
+	HEAD SCRIPTS
+	--> 
+	<script src="/assets/js/modernizr-2.5.3.js"></script>
+
+</head>
+
+<body class="registration logged-in">
+
+	<? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'); ?>
+
+	<div id="wrapper-page">
+
+		<header>
+			<h1>REstyleSOURCE | FAQ</h1>
+
+			<? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/social.php'); ?>
+			
+		</header>
+
+		<section role="main">
+			<h3>WHAT IS REstyleSOURCE?</h3>
+<p>REstyleSOURCE is the national guide to local shops, businesses and restaurants. </p>
+<h3>WHAT CAN I FIND HERE?</h3>
+<p>*Our CITY GUIDES take you on a tour through our favorite local shops and restaurants across the country. </p>
+<p>*Our INSPIRATION pages show you beautiful spaces, real homes and designer rooms &ndash; and where to find all the pretty things in those pictures. We also have party ideas, recipes, D-I-Y projects, holiday decorating guides, and trend reports. Did you hear that Kelly green is big for spring?</p>
+<p>*In our STYLE FILE you can even build a personal clipboard filled with all the products you love. See STYLE FILE below.</p>
+<h3>WHAT IS A STYLE SOURCE? </h3>
+<p>STYLE SOURCES are our directory of stylish local shops, restaurants, people and businesses across the country: interior designers, photographers, trendy fashionistas, that great accessory boutique, the best caf&eacute; in Brooklyn are all listed here. These are the people that can help you decorate a room, upholster a chair, or take cute photos of your kids. All real people, all the time. </p>
+<h3>WHAT IS AN INSPIRATION PAGE? </h3>
+<p>Our inspiration pages are our &ldquo;go-to&rdquo; place to find all things fabulous. Whether you&rsquo;re decorating your home, planning a get-away to a new city, or looking for a new dinner spot in town, let our inspiration pages guide you on an adventure. Our inspiration pages also tell you exactly where to buy the featured products in your area. </p>
+<h3>I FOUND SOMETHING ON RESTYLESOURCE THAT I LOVE. HOW CAN I FIND IT IN A STORE NEAR ME?</h3>
+<p>If you see a product that you can&rsquo;t live without, click on the FIND THIS button underneath the product thumbnail for a list of stores that have the product, can order it for you, or stock similar looks.</p>
+<h3>HOW DO I CONTACT A BUSINESS ABOUT A PRODUCT I WANT? </h3>
+<p>We&rsquo;ve made this part simple &ndash; underneath the product thumbnail is an envelope icon. Click the envelope and an email will launch directed to that particular business. </p>
+<h1>SEARCH</h1>
+<h3>WHY IS THE SEARCH PULLING IN RESULTS OUTSIDE OF MY SELECTED STATE?</h3>
+<p>If there are fewer than 3 results in your selected search, our system will automatically pull in results from surrounding states. See our map below for our region break out information. This allows you to have more stores to choose from.</p>
+<h3>WHAT IF I LIVE OUTSIDE OF THE UNITED STATES? </h3>
+<p>Can we come visit? Our current listings are limited to U.S. stores, but we&rsquo;re working on that. Meanwhile, if you can&rsquo;t live without a product that you&rsquo;ve found on our site, call a retailer and see if they might be able to assist with international shipping.</p>
+<h1>PROFILE</h1>
+<h3>HOW DO I UPDATE MY PROFILE + ACCOUNT INFORMATION?</h3>
+<p>Click on the SETTINGS gear at the top right of our website. You can update your contact information, password, and email preferences. Click SUBMIT to save your changes.</p>
+<h3>ARE YOU GOING TO SEND ME AN EMAIL EVERY DAY?</h3>
+<p>Nope! We want you to be excited to see our name in your inbox. First and foremost, we will never sell your name to a third party or send you information that is irrelevant to REstyleSOURCE. If you check the &ldquo;SEND ME EMAIL UPDATES&rdquo; box, we will add you to our list and periodically send you emails about exciting news and finds. We&rsquo;re famous for giveaways. They usually involve gift certificates to our fabulous sources or pretty things that we love. You want to be on our list. You can always opt out of these emails too by deselecting the SEND ME EMAIL UPDATES option.</p>
+<h3>DO I HAVE TO PAY TO ENJOY RESTYLESOURCE.COM?</h3>
+<p>If you are using the site as a reader, shopper or consumer, it will always be FREE! If you are a business or manufacturer and would love to be part of our site, please email us for more information on benefits and pricing.</p>
+<h3>HOW DO I DELETE MY ACCOUNT?</h3>
+<p>If for any reason you want to delete your account, please <a href="mailto:info@restylesource.com">email</a> us. We&rsquo;ll delete, no questions asked.</p>
+<h1>STYLE FILE</h1>
+<h3>WHAT IS MY STYLE FILE?</h3>
+<p>My Style File is your personal collection of favorite sources, products and inspirations you found on REstyleSOURCE. When you&rsquo;re signed in, you can add your favorites by clicking the small &ldquo; + &ldquo; icon at the top of images. Once you&rsquo;ve clicked on the &ldquo; + &ldquo; icon, it will change to a green &ldquo; * &ldquo; to let you know it has been added to your file. Select STYLE FILE from the navigation bar to review all of your files. Your STYLE FILE will be organized by products, sources and inspirations. </p>
+<h3>HOW DO I REMOVE AN ITEM FROM MY STYLE FILE?</h3>
+<p>If you&rsquo;ve filed something twice or you changed your mind, simply click REMOVE at the top right hand corner of the image. </p>
+<h3>HOW CAN I SHARE MY STYLE FILE?</h3>
+<p>We love friends sharing looks they love! Copy and paste the URL of your STYLE FILE page and share with your friends. Stay tuned for upcoming enhancements regarding this feature. </p>
+		</section> <!-- // [role="main"] -->
+
+	</div> <!-- // #wrapper-page -->
+
+	<? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'); ?>
+
+	<!--
+	BODY JS
+	-->
+	<? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/js_includes.php'); ?>
+	
+
+</body>
+</html>

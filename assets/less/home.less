@@ -1,0 +1,96 @@
+// =================================
+//
+//   Main homepage
+//
+// =================================
+
+body.home {
+	.block.get-the-look { overflow:hidden; height:460px;
+		a { display:block; position:relative; overflow:hidden; height:460px;
+			p { position:absolute; top:50%; bottom:auto; left:0; margin:-0.5em 0 0; line-height:1.5; .font-headline(); text-transform:uppercase; font-size:1.875em;
+				span { display:block; padding:0.375em 1em; background:@color-primary; 
+					span { padding:0; line-height:1; }
+					span:first-child { font-size:0.875em; color:#c9c5c0; }
+				}
+			}
+			p + p { font-size:1em; margin:0; left:auto; right:0; 
+				span { padding:0.35em 1em; }
+			}
+		}
+	}
+
+	#featured-grid { .clearfix();
+		.featured { position:relative; width:282px; height:190px; float:left; margin-left:12px; margin-bottom:12px; overflow:hidden;
+			&:first-child { margin:0; }
+			h3 { position:absolute; top:0; left:-0.5em; margin:0; padding:0.05em 0.5em 0.05em 0.75em; background:white; color:@color-primary; z-index:1; text-transform:uppercase; font-weight:100; font-size:1em; .skewX(-24deg);
+				span { display:block; .skewX(24deg); letter-spacing:1px; }
+			}
+			img { position:absolute; top:0; left:0; }
+			h4 { display:block; margin:0; position:absolute; bottom:0; left:0; right:0; padding:0.5em 100px 0.5em 0.5em; background:rgba(117,43,0,.65); color:white; z-index:2; font-size:1.375em; text-transform:uppercase; line-height:1; 
+				&:after { content:">"; display:block; position:absolute; top:0; right:12px; bottom:0; color:white; font-size:120px; font-weight:100; .font-alexandria(); line-height:72px; }
+			}
+
+			// DIY
+			&.diy {
+				h4 { background:rgba(11,112,134,.75); }
+			}
+			// Featured retailer
+			&.retailer {
+				h3 { display:block; position:absolute; top:0; right:0; bottom:0; left:0; background:transparent; .skewX(0); text-indent:-9999px; background:url(../images/bg-home-featured-retailer.png) center center no-repeat; }
+				h4 { height:0; position:absolute; top:50%; margin-top:-28px; right:0; left:0; padding:10px 0 48px; text-align:center; .skewX(0); background:none; color:white; font-size:1.375em; line-height:1.2; background:rgba(174,16,92,.65);
+					&:after { display:none; }
+					span { display:block; font-size:0.35em; .skewX(0); }
+				}
+			}
+
+			// What is Restyle Source?
+			&.what-is-restyle { margin:0; width:576px; background:url(../images/bg-what-is-restyle.jpg) no-repeat;
+				h3 { margin:40px 0 0 82px; width:300px; padding:0; padding-bottom:60px; background:url(../images/bg-home-video-play.png) left bottom no-repeat; font-size:2em; .skewX(0); line-height:1.1; 
+					&:hover { opacity:.75; }
+				}
+				ul, li { float:right; width:130px; margin:0; padding:0; list-style:none; text-transform:uppercase; }
+				ul { margin-top:18px; padding:0 0 0 20px; border-left:1px dotted @color-primary; font-size:0.875em; }
+				li { margin:2px 0; }
+			}
+
+
+			// Happenings
+			&.happenings {
+				h4 { background:rgba(0,0,0,.35); }
+			}
+
+			// Bottom banner
+			&.banner { position:relative; margin:0; width:auto; height:auto; clear:both; margin-top:1em; padding-top:1em;
+				&:before { content:""; display:block; position:absolute; right:-45px; top:-1em; left:-45px; border-top:1px dotted @color-primary; }
+				img { display:block; position:relative; }
+			}
+		}
+	}
+}
+
+.banner.design-dilemmas { position:relative; margin:-0.5em 0 2em; padding:15px 55px; background:#e0dbd7 url(../images/sources/bg-block-paper-middle.jpg) center center no-repeat;
+	h2, p { display:inline-block; vertical-align:baseline; margin:0; }
+	h2 { position:relative; top:0.1em; font-size:2em; color:white; text-transform:uppercase; line-height:1; }
+	p { display:inline-block; margin-left:0.5em; text-transform:lowercase; color:@color-link-bright; font-size:1.5em; .font-alexandria(); font-weight:bold; letter-spacing:1px; 
+		&:hover { color:darken(@color-link-bright,5%); }
+	}
+	.submit { position:relative; margin:0 4px 0 0; position:absolute; right:55px; top:50%; margin-top:-8px; padding:3px 8px 0 8px; background:#5f605b; color:white; font-size:0.675em; line-height:1.1; font-weight:bold; text-decoration:none; text-transform:uppercase;
+		&:after { content:""; display:block; position:absolute; top:0; right:-8px; bottom:0; border:6px solid transparent; border-left-color:#5f605b; border-width:8px 4px; }
+	}
+
+	// Borders
+	&:after { content:""; display:block; position:absolute; top:-1em; right:-45px; left:-45px; border-top:1px dotted @color-primary; }
+	&:before { content:""; display:block; position:absolute; bottom:-1em; right:-45px; left:-45px; border-bottom:1px dotted @color-primary; }
+}
+
+// =================================
+//
+//   Slideshow
+//
+// =================================
+
+.slideshow { position:relative; height:460px; overflow:hidden; margin-bottom:40px; }
+.slideshow-nav { position:absolute; right:20px; bottom:20px; z-index:200; 
+	a { display:inline-block; text-indent:-9999px; .border-radius(500px); width:7px; height:7px; border:2px solid white; margin-left:8px; }
+	.activeSlide { background:white; }
+}

@@ -1,0 +1,504 @@
+<?
+
+	include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.php');	
+	include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/logincheck.php');
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/ps_pagination.php';
+
+	$section = "sources";
+	$source_image_directory = "/source-images/";
+	
+	$sort = $_REQUEST['sort'];
+	$row_limit = ($_REQUEST['limit']) ? $_REQUEST['limit'] : 5; 
+
+	$source_id = $_GET['id'];
+
+	if($row_limit=="ALL"){
+		$row_limit = 10000;
+	}
+	
+	$conn = @mysql_connect ($DB_HOST, $DB_USER ,$DB_PASSWD);
+	mysql_select_db ($DB_DBNAME, $conn);
+	
+	$products_width  = 6;
+	
+	$numPerPage = ($_REQUEST['numPerPage']) ? $_REQUEST['numPerPage'] : ($row_limit * $products_width);
+	
+	if($numPerPage==0)
+		$numPerPage = $row_limit * $products_width;
+		
+	$photo_path = lookup_config('product_image_path');
+	//$is_source = (in_array($g_sess->get_var("systemTeam"), array('retailer','manufacturer'))) ? 1 : 0;
+	
+	$is_source = (in_array($g_sess->get_var("systemTeam"), array('retailer'))) ? $g_sess->get_var("inventory_ind") : 0;
+	
+
+	//lookup related products
+	$source_id = ($is_source == 1) ? $g_sess->get_var("user") : 0;
+	
+	$source_result = user_search($source_id, '');
+	
+	if($source_result){
+		$row = @mysql_fetch_array($source_result);
+		$company = $row['company'];
+		$user_group_id = $row['user_group_id'];
+		$city = $row['city'];
+		$state = $row['state'];
+		$source_type = $row['inventory_ind'];
+	} else {
+		my_redirect('/home.php');
+	}
+	
+	if(!check_manufacturer_view($_REQUEST['id'], $g_sess->get_var("systemTeam"))){
+		my_redirect('/home.php');
+	}
+	
+	if(!$_SERVER['QUERY_STRING']){
+		$_SERVER['QUERY_STRING'] = "id=" . $_GET['id'];
+	}
+	
+
+	
+	$sql = source_products($_GET['id'], 0, $source_id, 0, 'sql', $sort);
+	$search_qs = remove_object_querystring($_SERVER['QUERY_STRING'], 'page1');	
+	$pager = new PS_Pagination($conn, $sql, $numPerPage, 5, $search_qs, 'page1');
+	$product_result = $pager->paginate();
+	//$product_result = source_products($_GET['id'], 1, $source_id);
+
+	if($product_result){
+	
+		$output = "<ul class='source-ul'>";
+	
+		while($row = mysql_fetch_array($product_result)){
+		
+			if($i==$products_width){
+				$i = 0;
+				$output.= "</ul><ul>";
+			}
+		
+			$discontinued = ($row['discontinued_ind']) ? '<span style="color:#f47920;font-size:13px;">* DISCONTINUED</span>' : '';
+			$discontinued_class = ($row['discontinued_ind']) ? 'discontinued' : '';
+		
+			$product_image_result = product_image_search($row['product_id'], 0, 1);
+		
+			if($product_image_result){
+				$product_image_row = @mysql_fetch_array($product_image_result);
+			
+				$product_image = $product_image_row['image'];
+				$alt = $product_image_row['image_alt'];
+			}
+		
+			$output.= '<li class="relative">
+							<a href="/product/' . seo_friendly($row['product']) . '/' . $row['product_id'] . '/" title="' . $row['product'] . '">
+								<img src="http://www.restylesource.com/' . $photo_path . $product_image .  '" width=135 alt="' . $alt . '" />
+							</a>
+							<a href="#" class="add-to-sf ' . $liked . '" data-type="product" data-id="' . $row['product_id'] . '" title="Add to Style File">Add to Style File</a>
+							<h3>' . $row['product'] . '</h3>';
+	
+			if($row['carry_or_simular'] == 0){
+							
+				$output.= '<div class="hover left">
+								<div class="tag prod-order canorder">Carries Product Line / Can Order</div> <!-- end tag -->
+								<img src="/assets/images/icon-product-line.jpg" class="icons left" /> 
+							</div> 
+							<div class="hover relative left">
+								<div class="tag prod-order canorderemail">Email Source</div> <!-- end tag --> 
+								<a href="/ajax/ajax-product-email.php?product_id=' . $row['product_id'] . '&source_id=' . $source_id . '" class="email">Email us</a>
+							</div>';
+							
+			} else if ($row['carry_or_simular'] == 1){
+			
+				$output.= '<div class="hover left">
+								<div class="tag prod-stock instock"> Product In Stock</div> <!-- end tag -->
+								<img src="/assets/images/icon-product-stock.jpg" class="icons left" />
+							</div> 								
+							<div class="hover left">
+								<div class="tag prod-stock instockemail">Email Source</div> <!-- end tag -->
+								<a href="/ajax/ajax-product-email.php?product_id=' . $row['product_id'] . '&source_id=' . $source_id . '" class="email">Email us</a>	
+							</div>';
+			 
+			} else if ($row['carry_or_simular'] == 2){
+				
+				$output.= '<div class="hover left">
+										<div class="tag prod-style getthestyle-inventory"> Get The Style</div> <!-- end tag -->
+										<img src="/assets/images/icon-product-style.jpg" class="icons left" />
+                                    </div> 								
+									<div class="hover left">
+										<div class="tag prod-stock instockemail">Email Source</div> <!-- end tag -->
+										<a href="/ajax/ajax-product-email.php?product_id=' . $row['product_id'] . '&source_id=' . $source_id . '" class="email">Email us</a>	
+									</div>';
+			}
+						
+			if($is_source > 0){
+							
+				$output.= '<div style="clear: both;"></div><form class="ajax-form" method="post">
+								<input type="hidden" id="product-id" value="' . $row['product_id'] . '" />';
+			
+				if($row['carry_or_simular'] > 0){
+					$label = ($is_source==1) ? 'I no longer carry' : 'I am no longer a source for this style';
+			
+					$output.= '<label for="remove">
+									<input type="radio" class="remove" name="' . $row['product_id'] . '" />
+									<p>' . $label . '</p>
+								</label>';
+				} else if($is_source==1) {						
+									
+					$output.= '<label for="i-carry">
+									<input type="radio" class="i-carry" name="' . $row['product_id'] . '" />
+									<p>I have this product</p>
+								</label>
+								<label for="i-carry-similar">
+									<input type="radio" class="i-carry-similar" name="' . $row['product_id'] . '" />
+									<p>I carry this line</p>
+								</label>';
+							
+				} else if ($is_source==2){
+
+					$output.= '<label for="i-carry">
+									<input type="radio" class="style-source" name="' . $row['product_id'] . '" />
+									<p>I AM A SOURCE FOR THIS STYLE</p>
+								</label>';
+							
+			
+				}				
+			
+				$output.= '<input type="submit" class="ajax-submit ' . $discontinued_class . '" value="Submit" class="button primary" />
+							</form>' . $discontinued;
+				//<a href="/ajax/ajax-discontinued.php" class="discontinue">X</a>
+			} else {
+				$output.= '';
+			}				
+						
+			$output.= '</li>';
+					
+			$i++;			
+		}
+	
+		$output.= "</ul>";
+	
+	}
+
+	if($output == "<ul></ul>" || $output==""){
+		// do nothing
+	} else {
+		$nav1 = $pager->renderFirst() . $pager->renderPrev() . $pager->renderNav("<li>", "</li>") . $pager->renderNext() . $pager->renderLast();
+	}
+
+	$sql = source_products($_GET['id'], 0, $source_id, 0, 'sql');
+	$search_qs = remove_object_querystring($_SERVER['QUERY_STRING'], 'page2');
+	$pager = new PS_Pagination($conn, $sql, $numPerPage, 5, $search_qs, 'page2');
+	$product_result = $pager->paginate();
+	 
+
+
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en-us" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-us" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-us" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-us" class="no-js"> <!--<![endif]-->
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+
+	<title><?=$company?> | <? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/title.php'); ?></title>
+
+	<!-- 
+	CSS
+	-->
+	<!--[if !IE 6]><!-->
+	<link rel="stylesheet" media="screen, projection" href="/assets/css/main.css" />
+	<!--<![endif]-->
+	<!--[if lte IE 6]><link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection"><![endif]-->
+
+	<!--
+	FAVICON
+	--> 
+	<link rel="shortcut icon" href="/assets/images/favicon.gif" type="image/gif" /> 
+	<!-- 
+	HEAD SCRIPTS
+	--> 
+	<script src="/assets/js/modernizr-2.5.3.js"></script>
+
+</head>
+
+<body class="source sources product-detail logged-in search">
+
+	<? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'); ?>
+
+	<div id="wrapper-page">
+
+		<header>
+			<h2><?=$company?> <span><?=$city?>, <?=$state?></span></h2>
+
+			<?
+
+	include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/db.php');	
+	include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/logincheck.php');
+
+	if($_REQUEST['id'] > 0){	
+
+		$result = user_search($_REQUEST['id']);
+		$row = mysql_fetch_array($result);
+?>
+		<nav>
+<?
+		if($row['facebook'] != ""){
+			echo('<a href="' . $row['facebook']  . '" target="_new"><img src="/assets/images/sources/icon-facebook.png" /></a>');
+		}
+			
+		if($row['twitter'] != ""){
+			echo('<a href="' . $row['twitter'] . '" target="_new"><img src="/assets/images/sources/icon-twitter.png" /></a>');
+		}
+		
+		if($row['linkedin'] != ""){
+			echo('<a href="' . $row['linkedin'] . '" target="_new"><img src="/assets/images/sources/icon-linkedin.png" /></a>');
+		}	
+			
+	}
+?>	
+			</nav>
+
+			<a href="/sources/<?=seo_friendly($company)?>/<?=$_GET['id']?>/" class="back">Back to Source ></a>
+			
+		</header>
+		<?if($output && $output != "<ul></ul>"){?>
+		<section id="get-the-look">
+			<?if($user_group_id==4){?>
+			<h2><span>Our Products</span></h2> 	
+			<?} else {?>
+			<h2><span>Products We Have</span></h2> 
+			<?}?>
+			
+			<ul class="side-key no-bottom-border no-bottom-margin left fifty">
+                            <li class="true-clear fnone"><span><img src="/assets/images/icon-small-gray-email.jpg" /></span> Email Source</li>
+                            <li class="true-clear fnone"><span><img src="/assets/images/icon-product-stock.jpg" /></span> Product In Stock</li>
+                            <li class="true-clear fnone"><span><img src="/assets/images/icon-product-line.jpg" /></span> Carries Product Line / Can Order</li>
+                            <li class="true-clear fnone"><span><img src="/assets/images/icon-product-style.jpg" /></span> Get The Style</li>
+                    	</ul>
+                        
+                        <div class="sort right fifty text-right" style="width:121px !important; text-align:left;">
+                        
+                        <select id="search-sort" name="search" class="uniform sort-selected">
+                            <option value="">Sort by</option>
+                            <option value="A-Z" <?if($sort == "A-Z") echo("selected=\"selected\"")?>>A-Z</option>
+							<option value="stock" <?if($sort == "stock") echo("selected=\"selected\"")?>>In Stock</option>
+							<option value="line" <?if($sort == "line") echo("selected=\"selected\"")?>>Carry Line</option>
+							<!--<option value="style" <?if($sort == "style") echo("selected=\"selected\"")?>>Get Style</option>-->
+                        </select>
+                        
+                        </div> <!-- end sort by -->
+                        
+                        <div style="clear:both;"></div>
+                        
+                        <div class="fr">SHOW <a class="inline <?if($row_limit==5){ echo("active"); }?>" href="javascript: limit=5; $('#search-sort').trigger('change');">30</a> <a class="inline <?if($row_limit==15){ echo("active"); }?>" href="javascript: limit=15; $('#search-sort').trigger('change');">90</a> <a class="inline <?if($_REQUEST['limit']=='ALL'){ echo("active"); }?>" href="javascript: limit='ALL'; $('#search-sort').trigger('change');">ALL RESULTS</a></div>
+                        
+                        <div class="border-divider"></div> <!-- end border divider -->
+			
+			<?=$output?>
+		</section>
+		<ul id="search-nav-bar" style="list-style:none"><?=$nav1?></ul>
+		<?}?>
+		
+	</div> <!-- // #wrapper-page -->
+	<a id="discontinued" href="/ajax/ajax-discontinued.php" class="discontinue"></a>
+	<? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'); ?>
+
+	<!--
+	BODY JS
+	-->
+<? include_once($_SERVER['DOCUMENT_ROOT'] . '/includes/js_includes.php'); ?>
+
+	<script>
+
+		$(document).ready(function() {
+			
+			$('select.uniform').uniform();
+			
+			// make the tooltips showup on hover
+			$('#get-the-look li .hover').live('hover', function(event) {
+
+				var tags = $(this).children('.tag');
+				$(tags).toggle();
+				
+			}); // end function
+			
+			
+		}); // end onload
+
+		var form = '';
+		var data = '';
+		var relationship = '';
+
+		var limit = '<?=$row_limit?>';
+
+		$('#search-sort').change(function() {
+			//alert($('#search-sort').val());
+			
+			var link = "/source-inventory.php?id=<?=$_GET['id']?>&sort="+$('#search-sort').val() + "&limit=" + limit;
+
+			top.location = link;
+		});
+
+		$('.ajax-submit').click(function () {
+	
+			if($(this).parent().find('.i-carry').attr("checked")){
+				relationship = 'carried';
+			} else if ($(this).parent().find('.i-carry-similar').attr("checked")){
+				relationship = 'similar';
+			} else if ($(this).parent().find('.style-source').attr("checked")){
+				relationship = 'source';
+			} else if ($(this).parent().find('.remove').attr("checked")){
+				relationship = 'remove';
+			} else {
+				alert("Please select if you carry this product or a similar product to continue.");
+				return false;
+			}
+			
+			form = $(this).parent();
+			
+			//alert($(this).parent().html());
+			
+			data = 'function=source_product_relation&product_id=' + $(this).parent().find('#product-id').val() + '&relationship=' + relationship;    
+			
+			if($(this).hasClass('discontinued') && relationship != 'remove'){
+				$("#discontinued").click();
+			} else {
+			
+				$.ajax({
+			
+					url: "/ajax/ajax-functions.php", 
+					type: "POST",
+					data: data,     
+					cache: false,
+
+					success: function (html) {              
+						if (html==1) {
+							if(relationship=="remove"){
+								form.html('<small>Removed from Inventory</small>');
+							} else if(relationship == "source"){
+								form.html('<small>Added as Source</small>');
+							} else {                  
+								form.html('<small>Added to Inventory</small>');
+							}
+						} else {
+							alert('Sorry, unexpected error. Please try again later.');
+						}               
+					}       
+				});		
+	
+			}		
+	
+			return false;
+		});
+
+		// Product email
+		$(".relative .email").dialogAjax({
+			dialogClass: "product-email",
+			buttons: {
+				Submit: {
+					text: "Submit",
+					"class":'button primary',
+					click: function() {
+					
+						var data = $('#product-email-form').serialize();
+					
+						thisDialog = $( this );
+					
+						if(data){
+					
+							$.ajax({
+							  type: 'POST',
+							  url: '/ajax/ajax-functions.php?f=contact',
+							  data: data,
+							  success: function(data) {
+								//$( this ).dialog( "close" );
+								//dialog.remove();
+								thisDialog.dialog("close");
+							  },
+							  error: function(e){
+								alert(e);
+							  }
+							  
+							});
+
+						} else {
+
+							var str = $("#login-form").serialize();
+					
+							$.ajax({  
+							  type: "POST", 
+							  cache: false,
+								  dataType: "json", 
+							  url: "/ajax/ajax-login-process.php",  
+							  data: str,  
+							  success: function(data) {  
+							  
+								if(data.user_id>0){
+									location.reload();
+								} else {
+									$('#login-error').html(data.error);
+									loadingIndicator.fadeOut(200);
+								}
+							  }  
+							});
+						
+						}
+					
+						loadingIndicator.fadeIn(200);
+						// Uncomment the following 2 lines once loading is done
+						// $( this ).dialog( "close" );
+						// dialog.remove();
+						//$('form.location').submit();
+					}
+				}
+			}
+		});
+		// Discontinued
+		$(".discontinue").dialogAjax({
+			dialogClass: "discontinued",
+			buttons: {
+				Submit: {
+					text: "YES, I HAVE THIS",
+					"class":'button primary',
+					click: function() {
+						$.ajax({
+							url: "/ajax/ajax-functions.php", 
+							type: "POST",
+							data: data,     
+							cache: false,
+
+							success: function (html) {              
+								if (html==1) {
+									if(relationship=="remove"){
+										form.html('<small>Removed from Inventory</small>');
+									} else if(relationship == "source"){
+										form.html('<small>Added as Source</small>');
+									} else {                  
+										form.html('<small>Added to Inventory</small>');
+									}
+								} else {
+									alert('Sorry, unexpected error. Please try again later.');
+								}               
+							}       
+						});		
+
+						thisDialog = $( this );
+						thisDialog.dialog("close");
+					}
+				},
+				Cancel: {
+                    text: "Cancel",
+                    "class":'button cancel',
+                    click: function() {
+						thisDialog = $( this );
+						thisDialog.dialog("close");
+                    }
+                }
+			}
+		});
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+
+RewriteRule ^source/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ \/source-listing.php?id=$2  [L,QSA]
+
+RewriteRule ^product/([^\s]+)/([a-zA-Z0-9_-]+)/$ \/product-detail.php?id=$2  [L,QSA]
+RewriteRule ^sources/([^\s]+)/([a-zA-Z0-9_-]+)/$ \/sources.php?id=$2  [L,QSA]
+RewriteRule ^source/([^\s]+)/inventory/([a-zA-Z0-9_-]+)/$ \/source-inventory.php?id=$2  [L,QSA]
+RewriteRule ^source/([^\s]+)/([^\s]+)/([^\s]+)/([^\s]+)/$ \/source-listing.php?id=$2&subid=$3&search_state=$4  [L,QSA]
+RewriteRule ^source/([^\s]+)/([^\s]+)/([^\s]+)/$ \/source-listing.php?id=$2&subid=$3  [L,QSA]
+RewriteRule ^source/([^\s]+)/([^\s]+)/$ \/source-listing.php?id=$2  [L,QSA]
+RewriteRule ^inspiration/([^\s]+)/([^\s]+)/([^\s]+)/([a-zA-Z0-9_-]+)/$ \/inspiration-type.php?id=$4  [L,QSA]
+RewriteRule ^inspiration/([^\s]+)/([^\s]+)/([a-zA-Z0-9_-]+)/$ \/inspiration-category.php?id=$3  [L,QSA]
+RewriteRule ^inspiration/([^\s]+)/([a-zA-Z0-9_-]+)/$ \/inspiration.php?id=$2  [L,QSA]
+
+RewriteRule ^inspiration$ \/inspiration.php?id=25  [L,QSA]
+RewriteRule ^product$ \/faq.php  [L,QSA]
+RewriteRule ^source$ \/faq.php  [L,QSA]
+RewriteRule ^sources$ \/faq.php  [L,QSA]
+
+RewriteRule ^inspiration/$ \/inspiration.php?id=25  [L,QSA]
+RewriteRule ^product/$ \/faq.php  [L,QSA]
+RewriteRule ^source/$ \/faq.php  [L,QSA]
+RewriteRule ^sources/$ \/faq.php  [L,QSA]
+
+
+RewriteRule ^style/([^\s]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ \/style-file-user.php?id=$2&sort=$3  [L,QSA]
+RewriteRule ^style/([^\s]+)/([a-zA-Z0-9_-]+)/$ \/style-file-user.php?id=$2  [L,QSA]
+
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteCond %{HTTP_HOST} !^dev [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^email$ "https\:\/\/www\.google\.com\/a\/restylesource\.com\/" [R=301,L]

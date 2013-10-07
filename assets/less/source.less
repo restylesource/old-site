@@ -1,0 +1,223 @@
+// =================================
+//
+//   Source Pages
+//
+// =================================
+
+// Main sources page
+body.source.sources {
+	#uniform-directory-sort { position:absolute; width:160px; top:1.5em; right:0; }
+	#get-the-look { margin-top:3em;
+		h2 { border-top:none; font-size:0.875em; padding-bottom:1em; }
+		h2 span { .header-tape-bg(); font-weight:100; }
+		h2 a { display:inline-block; margin-left:1.5em; }
+		li h3 { padding-bottom:0; border-bottom:none; font-size:1.125em; line-height:1.2; }
+		li h4 { margin-bottom:0.5em; }
+	}
+	#featured-source { .clearfix(); min-height:320px;
+		.block.featured { position:relative; margin:0; width:470px; height:320px; float:left; background:white;
+			h2 { display:block; position:absolute; top:0; right:0; bottom:0; left:0; background:url(../images/sources/bg-featured-source.png) center center no-repeat; .skewX(0); text-indent:-9999px; z-index:2; }
+			h3 { height:65px; position:absolute; top:50%; margin-top:-18px; right:0; left:0; padding:0; text-align:center; .skewX(0); background:none; color:white; font-size:1.375em; line-height:1.2; z-index:3; text-transform:uppercase; 
+				&:after { display:none; }
+				span { display:block; font-size:0.25em; .skewX(0); letter-spacing:1px; }
+			}
+			img { position:absolute; top:0; left:0; }
+		}
+		.info { float:right; width:360px;
+			h3 { margin-top:0; margin-bottom:0.25em; font-size:1.25em; text-transform:uppercase; }
+			p { margin-top:0; .font-headline(); 
+				a + a { margin-left:1em; }
+			}
+			h4 { margin-bottom:0.25em; font-size:0.75em; color:#3bc2df; text-transform:uppercase; }
+			.vcard { margin-top:2em; border-top:1px dotted @color-primary; border-bottom:1px dotted @color-primary; 
+				a { color:@color-primary; }
+				p { font-size:0.75em; text-transform:uppercase; }
+				.email { margin-left:1em; text-transform:lowercase; }
+			}
+		}
+	}
+}
+
+// Individual Source page
+body.source {
+	#get-the-look { 
+		li h3 { border-bottom:none; }
+	}
+}
+
+// Add to style file
+.add-to-sf, #get-the-look .add-to-sf { display:block; position:absolute; top:0; left:0; width:33px; height:31px; background:url(../images/sources/icon-sf.png) no-repeat; text-indent:-9999px; z-index:100;
+	&:hover,
+	&.liked { background-position:0 -31px; }
+}
+
+// Carousel
+.block + #image-carousel { margin-top:-32px; }
+.scroll-pane { overflow:hidden; }
+.scroll-content { float: left; padding:0; white-space:nowrap; }
+.scroll-item { position:relative; display:inline-block; margin:5px 5px 0; width:190px; height:190px; list-style:none; background:#eee url(../images/admin/icon-no-photo.png) center center no-repeat;
+	&:first-child { margin-left:0; }
+	&:hover { opacity:.75; }
+}
+.scroll-bar-wrap { clear:both; padding: 0; margin: -5px 0 0 0; height:20px; background:url(../images/carousel-scroll-bg.png) center center no-repeat; 
+	.ui-slider { border:0; height:20px; margin: 0 auto;  }
+	.ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
+	.ui-slider-handle { display:block; position:absolute; width:100px; height:20px; top:0; bottom:0; background:@color-secondary; font-size:12px; font-style:italic; text-align:center; line-height:20px; .font-paragraph(); text-decoration:none;
+		&:after { display:block; position:absolute; top:0; right:0; bottom:0; left:0; content:"more images"; color:#4a4a47; font-weight:bold; text-align:center; }
+	}
+}
+
+#image-carousel { position:relative; margin-bottom:20px; }
+
+#source-info { position:relative; padding:5px 30px; margin-bottom:70px; background:url(../images/sources/bg-retailer-info-middle.jpg) 0 110px repeat-y;
+	&:before { content:""; display:block; position:absolute; top:0; right:0; left:0; z-index:1; height:110px; background:url(../images/sources/bg-retailer-info-top.jpg) no-repeat; }
+	&:after { content:""; display:block; position:absolute; right:0; left:0; bottom:-39px; z-index:1; height:39px; background:url(../images/sources/bg-retailer-info-bottom.jpg) no-repeat; }
+	.vcard { position:relative; z-index:2; font-weight:700;
+		a { color:@color-link; }
+		> h2 { width:50%; margin-bottom:0.5em; line-height:1; text-transform:uppercase; font-weight:normal; }
+		> p { width:50%; margin:0; .font-headline(); font-size:1.125em; text-transform:uppercase; }
+		.street-address, .locality, .region, .postal-code, .tel { font-weight:400; }
+		.tel { display:block; }
+
+		#contact-postings { position:absolute; top:45px; right:0; bottom:0; width:50%; z-index:3;
+			.button { display:block; position:absolute; top:0; left:0; color:@color-link;
+				&.contact { width:141px; height:83px; left:38px; top:auto; bottom:15px; padding-left:8px; padding-top:12px; background:url(../images/sources/button-bg-contact-retailer.png) 0 0 no-repeat; font-size:1em; line-height:1; font-weight:700;
+					span { display:block; }
+				}
+			}
+			#collection-polaroid { position:absolute; right:8px; top:-52px; width:212px; height:327px; z-index:1;
+				.csstransforms & { right:-20px; }
+				figure { .rotate(12deg); }
+				img { position:absolute; top:0; left:0; }
+				img + img { top:96px; left:10px; z-index:-1; }
+			}
+			#chalkboard { position:absolute; top:185px; right:30px; width:343px; height:251px; background:url(../images/sources/bg-chalkboard.png) no-repeat; color:white; 
+				p { position:absolute; right:100px; left:50px; bottom:28px; .rotate(2.5deg); .font-alexandria(); font-weight:700; font-size:1.5em; line-height:1.3; }
+			}
+			#clothes-pin { position:absolute; top:93px; left:-43px; width:237px; height:98px; background:url(../images/sources/clothes-pin.png) no-repeat; z-index:2; }
+		}
+		
+	}
+	> p, #testimonial, #local-loves { width:40%;
+		h1, h2 { text-transform:uppercase; font-size:1.125em; }
+		h1 { font-weight:700; margin-bottom:0; }
+		h2 { margin-bottom:0; font-weight:400; 
+			&:nth-of-type(1) { margin-top:0; }
+		}
+	}
+
+	#testimonial { position:relative;
+		p { line-height:2; }
+		.tags { .font-headline(); text-transform:uppercase; }
+	}
+
+	#local-loves { position:relative;
+		> p { margin:0; }
+	}
+
+}
+
+// =================================
+//
+//   Source Template 2
+//
+// =================================
+
+body.source-2 {
+
+	#source-info { height:278px; margin-bottom:10px; padding:0; background:none;
+		
+		&:before, &:after { display:none; }
+		
+		.vcard { position:absolute; right:0; bottom:0; width:420px; height:222px; padding:25px; background:#dfdfde; 
+			> h2 { margin-top:0; }
+			> h2, > p { width:auto; }
+			#contact-postings {
+				.button { left:auto; right:0; top:auto; bottom:0;
+					&.contact { right:32px; bottom:6px;
+						&:before { position:absolute; top:-70px; right:-12px; display:block; content:""; width:100px; height:100px; background:url(../images/sources/bg-fabric-swatch.png) no-repeat; z-index:-1; }
+						.lt-ie9 &:before { display:none; }
+					}
+				}
+				#chalkboard, #collection-polaroid { display:none; }
+				#clothes-pin { width:206px; height:58px; left:-124px; top:135px; background:url(../images/sources/clothes-pin2.png) no-repeat; }
+			}
+		}
+
+		#testimonial { position:absolute; bottom:0; left:0; width:340px; height:198px; padding:80px 25px 0; background:url(../images/sources/bg-testimonial.jpg) no-repeat; 
+			p { margin-top:0; }
+		}
+
+	}
+
+	#photo-spread { .clearfix();
+		img { display:block; float:left; margin-left:8px; 
+			&:hover { opacity:.75; }
+		}
+		a:first-child img { margin:0; }
+	}
+
+}
+
+// =================================
+//
+//   Source Template 3
+//
+// =================================
+
+body.source-3 {
+
+	#source-info { height:248px; margin-bottom:10px; padding:15px 30px 30px; background:url(../images/sources/bg-retailer-info3.jpg) no-repeat;
+		
+		&:before, &:after { display:none; }
+		&:after { right:auto; bottom:-8px; left:-15px; display:block; width:132px; height:132px; background:url(../images/sources/bg-retailer-info3-tape.png) no-repeat; }
+		
+		.vcard { float:left; width:55%;
+			> h2, > p { width:auto; }
+			> p { width:75%; }
+			#contact-postings { top:305px; right:12px;
+				.button { left:auto; right:0; top:auto; bottom:0;
+					&.contact { right:20px; bottom:80px; 
+						&:before { position:absolute; top:-70px; right:-12px; display:block; content:""; width:100px; height:100px; background:url(../images/sources/bg-fabric-swatch.png) no-repeat; z-index:-1; }
+						.lt-ie9 &:before { display:none; }
+					}
+					&.postings { right:35px; bottom:11px; }
+				}
+				#chalkboard, #collection-polaroid, #clothes-pin { display:none; }
+			}
+		}
+
+		#testimonial { position:relative; float:right; top:80px; width:45%;
+			p { margin-top:0; }
+		}
+
+	}
+
+}
+
+// =================================
+//
+//   Source Template 4
+//
+// =================================
+
+body.source-4 {
+
+	#source-info { height:248px; margin-top:20px; margin-bottom:10px; padding:20px 30px 30px; background:url(../images/sources/bg-retailer-info3.jpg) no-repeat;
+		
+		&:before, &:after { display:none; }
+		&:after { right:auto; bottom:-8px; left:-15px; display:block; width:132px; height:132px; background:url(../images/sources/bg-retailer-info3-tape.png) no-repeat; }
+		
+		.vcard { float:left; width:55%;
+			> h2, > p { width:auto; }
+			> p { width:75%; }
+			#contact-postings { display:none; }
+		}
+
+		#testimonial { position:relative; float:right; top:15px; width:45%;
+			p { margin-top:0; }
+		}
+
+	}
+
+}

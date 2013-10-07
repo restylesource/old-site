@@ -1,0 +1,51 @@
+body.happenings {
+	#wrapper-page { position:relative; padding:0 45px; z-index:3; .clearfix();
+		> header {
+			h1 { margin-bottom:0.45em; }
+			h2 { font-size:1.125em; }
+		}
+	}
+}
+
+// Select sort
+#uniform-happenings-sort { float:right; margin-top:-0.25em; }
+
+// Main event list
+.event-list { float:left; width:555px; 
+	h2 { .header-tape-bg(); margin-top:1.5em; }
+	ul, li { margin:0; padding:0; list-style:none; }
+	ul { padding-bottom:2em; border-bottom:1px dotted @color-primary; 
+		&:nth-last-of-type(1) { border:none; padding:0; }
+	}
+	li { position:relative; .clearfix(); margin:0.75em 0; min-height:100px; }
+	.date { position:relative; float:left; width:100px; height:100px; color:white;
+		img { position:absolute; top:0; left:0; }
+		p { position:absolute; bottom:10px; left:10px; margin:0; z-index:1; font-size:1.875em; text-transform:uppercase; .font-headline(); line-height:1; 
+			span { display:block; }
+		}
+	}
+	.info { margin-left:120px; }
+	h3, h4, a { display:block; margin:0; }
+	h3, h4 { text-transform:uppercase; }
+	h4 { font-weight:100; }
+	h4, a { font-size:0.875em; }
+	a { color:@color-link-bright; }
+}
+
+// Pagination
+.pagination { margin-top:4em;
+	a { float:left; text-transform:uppercase; font-size:1em; }
+	a + a { float:right; }
+}
+
+// Suggest event
+#suggest-event { position:relative; height:673px; margin-top:2em; padding:4em 0 3em; background:transparent url(../images/bg-paper-suggest-event.jpg) 0 0 no-repeat; width:250px; float:right; 
+	h2 { margin-top:0; margin-left:20px; margin-bottom:0.5em; color:white; text-transform:uppercase; font-size:1.875em; line-height:1; font-weight:100;
+		span { display:block; }
+	}
+	p { margin-top:0; margin-left:4px; margin-right:4px; padding:1em; border-top:1px dotted @color-primary; border-bottom:1px dotted @color-primary; }
+	form { margin:20px; }
+	input { display:block; width:205px; margin-bottom:0.875em; font-size:0.875em; padding:0.675em 0.5em; .box-sizing(border-box); }
+	textarea { display:block; font-size:0.875em; width:205px; margin-bottom:0.875em; padding:0.75em 0.25em; height:120px; .box-sizing(border-box); resize:none; }
+	input[type="submit"] { background:@color-link-bright; display:inline-block; float:right; width:auto; padding:0.25em 1em; }
+}

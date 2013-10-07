@@ -1,0 +1,174 @@
+@import '../js/colorbox/css/colorbox.css';
+@import '../js/fileinput/css/fileinput.css';
+@import 'normalize.less';
+@import 'vars.less';
+@import 'dialog.less';
+@import 'font-face.less';
+@import 'source.less';
+@import 'admin.less';
+// Media queries at bottom
+
+// =================================
+//
+//   General
+//
+// =================================
+
+html { -webkit-font-smoothing:antialiased; font-size:100%; background:#e5e6e7; }
+body { position:relative; width:960px; margin:0 auto; padding:0; background:white; color:#60605c; .font-din(); line-height:1.5; }
+
+::-moz-selection { background:#333; color:#fff; }
+::selection { background:#333; color:#fff; }
+
+// =================================
+//
+//   Forms
+//
+// =================================
+
+fieldset { border:none; }
+input { .font-din();
+	// Active state
+	&:focus { outline:none; }
+	// Normal text input
+	&[type="text"] { margin:0; padding:4px; border:none; background:white; }
+	// Submit
+	&[type="submit"] { border:none; padding:4px; background:@color-primary; color:white; font-size:18px; text-transform:uppercase; }
+}
+textarea { .font-alexandria(); }
+
+// =================================
+//
+//   Colors
+//
+// =================================
+
+@color-primary:#60605c;
+@color-secondary:#d2bba0;
+@color-link:#60605c;
+@color-link-blue:#3dc1dd;
+
+
+// =================================
+//
+//   Typography
+//
+// =================================
+
+// 12 / 16 =     0.75em
+// 14 / 16 =     0.875em
+// 16 / 16 =     1em
+// 18 / 16 =     1.125em
+// 21 / 16 =     1.3125em
+// 24 / 16 =     1.5em
+// 32 / 16 =     2em
+// 48 / 16 =     3em
+// 72 / 16 =     4.5em
+//
+
+.font-din() { font-family:"DIN",sans-serif; }
+.font-alexandria() { font-family:"Alexandria",Georgia,serif; }
+
+h1, h2, h3, h4, h5, h6 { }
+p { .font-alexandria(); font-size:0.75em; }
+a { color:@color-link; }
+
+
+// =================================
+//
+//   Buttons
+//
+// =================================
+
+.button { font-size:1.125em; text-decoration:none; text-align:center; text-transform:uppercase; 
+	&:active { .translate(1px, 1px); }
+}
+
+// =================================
+//
+//   Main Layout
+//
+// =================================
+
+section { position:relative; }
+
+// Site Header
+[role="banner"] { position:relative; height:115px; margin-bottom:90px; z-index:2; background:#cac2bb url(../images/bg-header.jpg);
+
+	// Dotted line
+	&:before { content:""; display:block; position:absolute; right:0; bottom:-62px; left:0; height:54px; background:url(../images/bg-header-dotted.png) no-repeat; }
+
+	// Logo
+	#logo { position:absolute; top:25px; left:40px; }
+
+	// Nav
+	nav { 
+		a { position:relative; font-size:18px; text-decoration:none; font-weight:100; text-transform:uppercase; letter-spacing:0.5px;
+			&:hover { opacity:.65; }
+			&.active { font-weight:900; 
+				&:before { content:""; display:block; position:absolute; right:0; bottom:-6px; left:0; height:6px; background:url(../images/bg-nav-active.png) right 0 no-repeat; }
+			}
+			.lt-ie9 & { letter-spacing:-1px; }
+		}
+		// Nav - Main
+		&[role="navigation"] { position:absolute; bottom:25px; left:210px; line-height:1; 
+			a { margin-right:25px; display:inline-block; }
+		}
+		// Nav - Utility
+		&#utility { position:absolute; width:auto; right:50px; top:0; line-height:1; text-align:center;
+			a { font-size:0.875em; }
+			a + a:before { content:"/"; margin-left:5px; margin-right:5px; }
+
+			// If logged in
+			body.logged-in & { height:34px;
+				p, a { display:inline-block; margin-top:0; margin-left:2px; padding:10px; background:#eeeae4; background:rgba(255,255,255,.45); color:@color-primary; font-size:0.875em; .font-din(); text-transform:uppercase; }
+				.settings { text-indent:-9999px; width:35px; background-image:url(../images/icon-header-settings.png); background-position:center center; background-repeat:no-repeat; padding:10px 0; }
+				a:before { display:none; }
+				a:hover { opacity:.75; }
+			}
+		}
+	}
+
+}
+
+// Site footer
+[role="contentinfo"] { position:relative; margin-top:40px;
+	&:before { content:""; display:block; position:absolute; top:-10px; right:0; left:0; border-top:1px dotted #666; }
+	a { text-decoration:none; }
+	p, nav { display:inline-block; font-size:10px; color:@color-primary; text-transform:uppercase; .font-din(); }
+	p { margin-left:45px; }
+	nav a { 
+		&:before { content:"•"; margin-left:5px; margin-right:5px; }
+	}
+}
+
+// =================================
+//
+//   Page styles
+//
+// =================================
+
+#wrapper-page { position:relative; padding:0 45px; z-index:3;
+	> header { position:relative;
+		h1, h2 { font-weight:100; }
+		h1 { margin-bottom:0; font-size:1.75em; color:#c9c5c0; text-transform:uppercase; line-height:1; }
+		h2 { margin-top:-0.125em; margin-bottom:0.5em; display:inline-block; font-size:2.25em; text-transform:uppercase; }
+		span { margin-top:0; margin-left:1em; display:inline-block; font-size:0.4444em; text-transform:uppercase; }
+
+		// Page header nav
+		nav { position:absolute; right:0; top:0; text-align:right;
+			// Pull up for source pages
+			body.source & { top:-58px; }
+			a { color:@color-link-blue; text-align:right;
+				&.archive { display:block; text-transform:uppercase; text-decoration:none; }
+			}
+			img { margin-left:3px; }
+		}
+	}
+}
+// =================================
+//
+//   Media Queries
+//
+// =================================
+@import 'media-queries.less';

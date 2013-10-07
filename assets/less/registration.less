@@ -1,0 +1,93 @@
+// =================================
+//
+//   User Registration
+//
+// =================================
+
+body.registration {
+	
+	#wrapper-page { .clearfix();
+		> header {
+			h1 { margin-bottom:0.45em; }
+			h2 { margin-top:0.5em; font-size:1.75em; }
+		}
+	}
+	
+	.retailer-manufacturer-designer { display:block; margin-bottom:1.25em; font-size:1.125em; padding:0.25em 0; border-top:1px dotted @color-primary; border-bottom:1px dotted @color-primary;  text-transform:uppercase; color:@color-link-bright; }
+
+	.column { width:335px; float:left; margin-right:2em; }
+
+	.fields-required { display:block; clear:both; margin-bottom:0.5em; text-transform:uppercase; font-size:0.675em; }
+
+	form#registration { padding-bottom:2em; margin-bottom:2.5em; border-bottom:1px dotted @color-primary; .clearfix(); 
+		input[type="text"],
+		input[type="password"] { display:block; width:95%; margin-bottom:0.875em; padding:0.75em 0.5em; }
+
+		label { font-size:0.875em; text-transform:uppercase; }
+		label p { font-size:1em; }
+		label a { display:block; }
+
+		.checkboxes.small {
+			label p { font-size:0.75em !important; }
+			input[type="checkbox"] { float:left; }
+		}
+
+		input[type="submit"] { float:right; background:@color-link-bright; padding:0.25em 0.5em 0; }
+
+		.checkboxes { float:left; width:70%; }
+
+		#uniform-state { margin-bottom:0.875em; }
+	}
+
+	#discover-sf { width:485px; margin-bottom:2em; padding-bottom:160px; background:url(../images/sources/bg-discover-sf.png) 0 bottom no-repeat;
+		h2 { padding-left:2.25em; font-weight:100; text-transform:uppercase; line-height:1.2; background:url(../images/sources/icon-sf-big.png) 0 center no-repeat; 
+			span { display:block; font-size:0.5em; }
+		}
+		p { .font-headline(); }
+		.icon-sf-small { display:inline-block; margin:0 0.5em 0 0.25em; width:16px; height:14px; background:url(../images/sources/icon-sf-small.png) no-repeat; text-indent:-9999px; vertical-align:middle; }
+	}
+}
+
+// =================================
+//
+//   Source Registration
+//
+// =================================
+
+body.source-registration {
+	#wrapper-page {
+		> header {
+			h1 { margin-bottom:1em; }
+		}
+	}
+	#uniform-source-type { width:180px; 
+		select { min-width:180px; }
+	}
+	form#registration {
+
+		// No big box stores por favor
+		a.no-bix-box { color:@color-primary; }
+		.row { .clearfix(); margin-bottom:0.5em;
+			h2 { margin-bottom:0.5em; text-transform:uppercase; border-bottom:1px dotted @color-primary; }
+			h2 + p { margin-top:0.25em; padding:0 0 0.25em; border-bottom:1px dotted @color-primary; text-transform:none; font-size:1.25em; font-weight:normal; }
+			p { margin-bottom:0.25em; .font-headline(); text-transform:uppercase; font-size:1em; font-weight:bold; }
+
+			&.good-fit { margin-top:1em; margin-bottom:2.5em;
+				h2 { margin-bottom:0; }
+			}
+		}
+		.row.items .checkboxes { width:60%; float:left; margin:0; 
+			+ .checkboxes { width:40%; }
+		}
+		.customfile { width:315px; border-color:#eeece9; 
+			.customfile-button { background:@color-link-bright; text-transform:uppercase; .border-radius(0); }
+		}
+	}
+
+	#discover-sf { width:485px; margin-bottom:2em; padding-bottom:160px; background:url(../images/sources/bg-registration-inventory.png) 0 bottom no-repeat;
+		h2 { padding-left:0; margin-bottom:0.5em; font-weight:100; text-transform:uppercase; line-height:1.2; background:none; 
+			span { display:block; font-size:0.5em; }
+		}
+		p { .font-headline(); }
+	}
+}

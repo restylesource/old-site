@@ -1,0 +1,8 @@
+/**
+ * --------------------------------------------------------------------
+ * jQuery customfileinput plugin
+ * Author: Scott Jehl, scott@filamentgroup.com
+ * Copyright (c) 2009 Filament Group 
+ * licensed under MIT (filamentgroup.com/examples/mit-license.txt)
+ * --------------------------------------------------------------------
+ */$.fn.customFileInput=function(){$(this).each(function(){var a=$(this).addClass("customfile-input").mouseover(function(){b.addClass("customfile-hover")}).mouseout(function(){b.removeClass("customfile-hover")}).focus(function(){b.addClass("customfile-focus");a.data("val",a.val())}).blur(function(){b.removeClass("customfile-focus");$(this).trigger("checkChange")}).bind("disable",function(){a.attr("disabled",!0);b.addClass("customfile-disabled")}).bind("enable",function(){a.removeAttr("disabled");b.removeClass("customfile-disabled")}).bind("checkChange",function(){a.val()&&a.val()!=a.data("val")&&a.trigger("change")}).bind("change",function(){var a=$(this).val().split(/\\/).pop(),b="customfile-ext-"+a.split(".").pop().toLowerCase();d.text(a).removeClass(d.data("fileExt")||"").addClass(b).data("fileExt",b).addClass("customfile-feedback-populated");c.text("Change")}).click(function(){a.data("val",a.val());setTimeout(function(){a.trigger("checkChange")},100)}),b=$('<div class="customfile"></div>'),c=$('<span class="customfile-button" aria-hidden="true">Browse</span>').appendTo(b),d=$('<span class="customfile-feedback" aria-hidden="true">No file selected...</span>').appendTo(b);a.is("[disabled]")&&a.trigger("disable");b.mousemove(function(b){a.css({left:0,top:0})}).insertAfter(a);a.appendTo(b);return $(this)})};

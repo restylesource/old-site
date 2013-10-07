@@ -1,0 +1,12 @@
+Dear [name],
+
+Welcome to ReStyleSource.com!
+
+You can login to ReStyleSource.com using the following login information:
+
+Username: [username]
+Password: [password]
+
+Thank you,
+
+ReStyleSource.com

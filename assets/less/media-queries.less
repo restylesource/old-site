@@ -1,0 +1,205 @@
+/**
+	[Media Queries]
+==================================
+**/
+
+// Mobile
+@media only screen and (max-device-width : 500px) {
+
+	// Wrappers
+	body, section, header { width:auto; height:auto; }
+
+	// Logo
+	[role="banner"] { height:auto; padding-top:10px; padding-bottom:5px;
+
+		// Dotted line
+	&:before { display:none; }
+		
+		#logo { position:relative; left:auto; top:auto; display:block; margin:0 auto; }
+
+		// Nav
+		nav { text-align:center;
+			a { position:relative; font-size:18px; text-decoration:none; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;
+				&.active { font-weight:900; 
+					&:before { display:none; }
+				}
+			}
+			&[role="navigation"] { position:relative; bottom:auto; left:auto;
+				li { display:block; margin:0; padding:10px 0; background:rgba(255,255,255,.85); 
+					&:nth-child(2n) { background:rgba(255,255,255,.45); }
+				}
+			}
+			&#utility { position:relative; left:auto; top:auto; margin:10px auto 0; width:auto !important; height:auto !important; right:0; padding:10px 0 !important; text-align:center;
+				p { margin-top:0; }
+			}
+		}
+
+		// Search
+		#search { position:relative; top:auto; right:auto; bottom:auto; left:auto; 
+			fieldset { margin:0; padding:0; }
+			input { display:block; margin:0; padding:0; float:none; height:28px; line-height:28px;
+				&[type="text"] { display:block; margin:10px auto; width:90%; padding:0 4px; background:#eee; }
+				&[type="submit"] { display:none; }
+			}
+		}
+
+	}
+
+	// Retailer Sources
+	#retailer-collection { position:relative;
+		> header { position:relative; top:auto; right:auto; height:auto; z-index:1; background:transparent; 
+			h1 { margin:10px 0; padding:0 10px; line-height:1.2; text-align:center; }
+		}
+		#image-main {
+			img { max-width:100%; }
+			.button { top:auto; right:10px !important; bottom:10px; left:auto; display:block; margin:0 auto; }
+		}
+	}
+
+	#retailer-info, body.retailer2 #retailer-info, body.retailer3 #retailer-info, body.retailer4 #retailer-info, body.manufacturer #retailer-info { height:auto; padding:10px; background:#ececec; margin-bottom:20px;
+			
+		&:before, &:after { display:none; }
+		
+		.vcard { position:relative; float:none; width:auto; height:auto; padding:0; background:transparent;
+			> h2 { width:auto; }
+			> p { width:auto; }
+			#contact-postings { position:relative; left:auto; top:auto; right:auto; bottom:auto; width:auto;
+				.button { margin:8px auto; left:auto; right:auto; top:auto; bottom:auto;
+					&.contact { position:relative; left:auto; top:auto; right:auto; bottom:auto; 
+						&:before { display:none; }
+					}
+					&.postings { position:relative; left:auto; top:auto; right:auto; bottom:auto; }
+				}
+				#chalkboard, #collection-polaroid, #clothes-pin { display:none; }
+			}
+		}
+
+		#testimonial { position:relative; float:none; bottom:auto; left:auto; top:auto; width:auto; height:auto; padding:0; background:transparent; }
+
+		#local-loves { width:auto; }
+
+	}
+
+	#photo-spread { display:none; }
+
+	// Manufacturer
+	body.manufacturer {
+		#retailer-collection > header h1 { display:block; margin:0 auto; background:none; line-height:1.2; margin-bottom:10px; }
+		#retailer-collection > header h2 { line-height:1.2; text-align:center; margin-bottom:10px; }
+	}
+
+	// Site footer
+	[role="contentinfo"] { position:relative; margin-top:10px; padding:0 10px;
+		&:before { content:""; display:block; position:absolute; top:-10px; right:0; left:0; border-top:1px dotted #666; }
+		a { text-decoration:none; }
+		p, nav { display:inline-block; font-size:10px; color:@color-primary; text-transform:uppercase; font-family:"DIN", sans-serif; }
+		p { margin-left:0; }
+		nav a { 
+			&:before { content:"•"; margin-left:5px; margin-right:5px; }
+			&:first-child:before { display:none; }
+		}
+	}
+
+	// Wrapping element
+	#wrapper-page { padding:0 1.25em; 
+		> header {
+			h2 {
+				span { display:block; margin:0; }
+				a { display:block; margin:0; }
+			}
+			nav { top:-70px !important; }
+		}
+	}
+
+	// Blocks
+	.block {
+		img { max-width:100%; }
+	}
+
+	.block.marquee { padding:1em; background:#e0dbd7;
+		p { margin:0; font-size:1.5em; border:none; }
+	}
+
+	.block.materials { padding:1em; background:#e0dbd7;
+		li { display:block; width:auto; margin:0; }
+	}
+
+	.block.hint { padding:1em; background:#e0dbd7;
+		h2 { float:none; width:auto; border:none; }
+		p { margin:0; }
+	}
+
+	.block.about.person {
+		img { margin:0 1em 1em 0; }
+		p { margin:0; }
+	}
+
+	.block.marquee.trends {
+		.content { width:100%; float:none; margin:0; }
+		.column { width:100%; float:none; }
+		.column + .column { margin-top:1em; }
+		img { float:none; }
+	}
+
+	.block.contact {
+		> div { display:block; width:auto; }
+		> div + div { margin-top:1em; }
+	}
+
+	// Homepage
+	body.home #featured-grid .featured { float:none; margin:0 auto 1em !important; clear:both; }
+	body.home #featured-grid .featured.what-is-restyle { margin:1em 0; padding:1em; background:#e0dbd7; width:auto; height:auto; float:none; }
+	body.home #featured-grid .featured.what-is-restyle h3 { position:relative; top:0; left:0; right:0; bottom:0; width:auto; margin:0; }
+	body.home #featured-grid .featured.banner img { max-width:100%; }
+	body.home .banner.design-dilemmas { margin:0 0 1em; padding:1em; background:#e0dbd7; width:auto; height:auto; float:none;
+		.submit { position:relative; right:0; top:0; bottom:0; left:0; margin:0; }
+		&:before, &:after { display:none; }
+	}
+	body.home #featured-grid .featured.banner {
+		&:after { display:none; }
+		&:before { display:none; }
+	}
+	body.home #featured-grid .featured.what-is-restyle ul, 
+	body.home #featured-grid .featured.what-is-restyle li { float:none; width:auto; border:none; margin:0; padding:0; }
+	body.home .block.get-the-look a p,
+	.block.get-the-look a p { position:relative; top:0; right:0; bottom:0; left:0; margin:0; line-height:1.5; }
+	.block.get-the-look a p span { display:block; }
+
+	.slideshow { margin:0 0 1em; height:auto; }
+	body.home .block.get-the-look a { height:auto; }
+	body.home .block.get-the-look { height:auto; margin:0; overflow:hidden; }
+
+	// Get the look 
+	#get-the-look {
+		li { width:50%; margin:0 0 1em !important; }
+	}
+	.grid-categories.grid-small li { width:50%; magin:0 0 1em !important; }
+
+	// Grid categories
+	.grid-categories {
+		li { float:none; margin:0 auto 1em !important; }
+	}
+
+	// Generic select
+	.selector { float:none !important; width:auto !important; position:relative !important; top:0 !important; right:0 !important; }
+
+	// Featured retailer
+	body.source.sources #featured-source .block.featured { float:none; margin:0 auto; width:auto; height:auto; }
+	body.source.sources #featured-source .block.featured img { position:relative; }
+	body.source.sources #uniform-directory-sort { position:absolute !important; top:-1.5em !important; left:0 !important; }
+	body.source.sources #featured-source .info { float:none; width:auto; }
+
+	// Happenings
+	.event-list { float:none; width:auto; }
+	.event-list li { height:auto; }
+	.event-list .date { float:none; }
+	.event-list .info { position:relative; bottom:0; left:0; }
+	#suggest-event { float:none; width:auto; }
+	
+	video, iframe { max-width:100%; height:auto; }
+
+	// Forms
+	body.registration .column { float:none; width:auto; }
+	body.registration #discover-sf { display:none; }
+
+}
