@@ -1,7 +1,0 @@
-<IfModule mod_suphp.c>
-suPHP_ConfigPath /home/restyle/public_html
-<Files php.ini>
-order allow,deny
-deny from all
-</Files>
-</IfModule>

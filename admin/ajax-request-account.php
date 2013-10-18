@@ -1,6 +1,6 @@
 <?
 	$require_login = 1;
-	include_once('includes/db.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");
 
 	$user_groups = user_groups_search();
 	$user_group_options = build_generic_dropdown($user_groups, 3, 0);

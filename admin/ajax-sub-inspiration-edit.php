@@ -1,6 +1,6 @@
 <?
 
-	include_once('includes/db.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");
 	
 	$result = sub_inspiration_lookup($_GET['inspiration_id'], $_GET['sub_inspiration_id']);
 	if($result){

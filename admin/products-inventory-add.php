@@ -2,8 +2,8 @@
 
 	$require_login = 1;
 
-	include_once('includes/db.php');	
-	include_once('includes/logincheck.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");	
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/logincheck.php");
 	
 	$uploads_dir = "../products";
 	$uploads_thumb_dir = "../products/thumb";

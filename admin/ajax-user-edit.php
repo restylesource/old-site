@@ -2,8 +2,8 @@
 
 	$require_login = 1;
 
-	include_once('includes/db.php');	
-	include_once('includes/logincheck.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");	
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/logincheck.php");
 
 	if($_GET['user_id']){
 	

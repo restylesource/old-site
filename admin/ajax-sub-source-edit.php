@@ -1,6 +1,6 @@
 <?
 
-	include_once('includes/db.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");
 	
 	$result = sub_source_lookup($_GET['source_id'], $_GET['sub_source_id']);
 	if($result){

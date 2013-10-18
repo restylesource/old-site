@@ -1,6 +1,6 @@
 <?
 
-	include_once('includes/db.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");
 	
 	$result = color_lookup($_GET['color_id']);
 	

@@ -3,8 +3,8 @@
 	$require_login = 1;
 
 
-	include_once('includes/db.php');	
-	include_once('includes/logincheck.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");	
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/logincheck.php");
 
 	// Admin can edit anyone and User can edit their own profile
 	if($_REQUEST['user_id']>0 && $_REQUEST['user_id'] != $g_sess->get_var("user") && $g_sess->get_var("systemTeam") != "admin"){

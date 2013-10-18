@@ -1,6 +1,6 @@
 <?
 
-	include_once('includes/db.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");
 	
 	$result = sub_category_lookup($_GET['category_id'], $_GET['sub_category_id']);
 	if($result){

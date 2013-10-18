@@ -3,8 +3,8 @@
 	$require_login = 1;
 	$allowed_groups = array("admin");
 
-	include_once('includes/db.php');	
-	include_once('includes/logincheck.php');
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");	
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/logincheck.php");
 
 	if($_GET['action'] == "delete" && $_GET['category_id'] > 0){
 		category_delete($_GET['category_id']);
