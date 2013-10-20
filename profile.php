@@ -150,7 +150,7 @@
 			<div id="discover-sf">
 				<h2>Discover Your Style File <span>[ Start Filing ]</span></h2>
 				<p>Here is your personal Style File Link. <br />Please feel free to share this with anyone you like:<br />
-				<a href="http://www.restylesource.com/style/<?=$my_sf_link?>">http://www.restylesource.com/style/<?=$my_sf_link?></a><br /><br />
+				<a href="http://dev.restylesource.com/style/<?=$my_sf_link?>">http://dev.restylesource.com/style/<?=$my_sf_link?></a><br /><br />
 				
 				Click on any <span class="icon-sf-small">Style File</span>icon to save articles, images, and ideas to your own personal Style File. It's that easy.</p>
 			</div>

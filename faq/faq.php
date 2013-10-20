@@ -132,7 +132,7 @@ We’ve made this part simple – underneath the product thumbnail is an envelop
 <!-- Answer -->
 
 Yes! If you are a reader that wants to share your support for local businesses, we have a button with HTML code that you can put on your website. Retail partners can contact <a href="mailto:cstrom@restylesource.com" style="display: inline !important;">cstrom@restylesource.com</a> to get a button that links to their REstyleSOURCE inventory.
-<div style="margin-top: 20px;"><a href="http://www.restylesource.com" style="border: 0px; display: inline;"><img src="http://media.restylesource.com/images/buttons/RSSbutton_125x125.png"/></a><textarea cols="24" rows="5" style="margin-top: 20px; white-space:pre; background: #fff; border: 1px #61615c dotted; font-size: 0.875em; text-transform: none !important; display: inline; position: relative; left: 30px; top: -15px;"><a href="http://www.restylesource.com" style="border: 0px;"><img src="http://media.restylesource.com/images/buttons/RSSbutton_125x125.png"/></a></textarea>
+<div style="margin-top: 20px;"><a href="http://dev.restylesource.com" style="border: 0px; display: inline;"><img src="http://media.restylesource.com/images/buttons/RSSbutton_125x125.png"/></a><textarea cols="24" rows="5" style="margin-top: 20px; white-space:pre; background: #fff; border: 1px #61615c dotted; font-size: 0.875em; text-transform: none !important; display: inline; position: relative; left: 30px; top: -15px;"><a href="http://dev.restylesource.com" style="border: 0px;"><img src="http://media.restylesource.com/images/buttons/RSSbutton_125x125.png"/></a></textarea>
 </div>
 <!-- //Answer -->
 

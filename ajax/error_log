@@ -1411,3 +1411,11 @@
 [01-Aug-2013 06:15:14 UTC] PHP Warning:  mysql_query() expects parameter 2 to be resource, boolean given in /home/restyle/public_html/includes/db.class.php on line 66
 [08-Sep-2013 00:44:27 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/restyle/public_html/includes/db.class.php:237) in /home/restyle/public_html/includes/sqlsession.class.php on line 153
 [12-Sep-2013 04:44:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/restyle/public_html/includes/db.class.php:237) in /home/restyle/public_html/includes/sqlsession.class.php on line 153
+[23-Sep-2013 22:39:25 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/restyle/public_html/includes/db.class.php:237) in /home/restyle/public_html/includes/sqlsession.class.php on line 153
+[01-Oct-2013 00:57:11 UTC] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Too many connections in /home/restyle/public_html/includes/db.php on line 16
+[01-Oct-2013 00:57:11 UTC] PHP Warning:  mysql_error() expects parameter 1 to be resource, boolean given in /home/restyle/public_html/includes/db.php on line 16
+[01-Oct-2013 00:57:11 UTC] PHP Warning:  Missing argument 3 for my_die(), called in /home/restyle/public_html/includes/db.php on line 16 and defined in /home/restyle/public_html/includes/db.php on line 2994
+[01-Oct-2013 00:57:12 UTC] PHP Warning:  mysql_select_db() expects parameter 2 to be resource, boolean given in /home/restyle/public_html/includes/db.php on line 17
+[07-Oct-2013 03:40:33 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/restyle/public_html/includes/db.class.php:237) in /home/restyle/public_html/includes/sqlsession.class.php on line 153
+[08-Oct-2013 13:09:38 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/restyle/public_html/includes/db.class.php:237) in /home/restyle/public_html/includes/sqlsession.class.php on line 153
+[09-Oct-2013 00:43:07 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/restyle/public_html/includes/db.class.php:237) in /home/restyle/public_html/includes/sqlsession.class.php on line 153

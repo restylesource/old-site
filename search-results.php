@@ -32,7 +32,7 @@
 		$numPerPage = $row_limit * $products_width;
 
 	$photo_path = lookup_config('product_image_path');
-	$source_image_directory = "http://www.restylesource.com/source-images/";
+	$source_image_directory = "http://dev.restylesource.com/source-images/";
 	$search_type = ($_REQUEST['search_type']) ? $_REQUEST['search_type'] : "Sources";
 
 	if($_REQUEST['source'] > 0){
@@ -147,7 +147,7 @@
 				
 				$output.= '<li>
 								<a href="/product/' . seo_friendly($row['product']) . '/' . $row['product_id'] . '/" title="' . $row['product'] . '">
-									<img src="http://www.restylesource.com/' . $photo_path . $product_image .  '" width=135 alt="' . $alt . '" />
+									<img src="http://dev.restylesource.com/' . $photo_path . $product_image .  '" width=135 alt="' . $alt . '" />
 								</a>
 								<a href="#" class="add-to-sf ' . $liked . '" data-type="product" data-id="' . $row['product_id'] . '" title="Add to Style File">Add to Style File</a>
 								<h3>' . $row['product'] . '</h3>';

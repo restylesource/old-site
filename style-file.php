@@ -83,7 +83,7 @@
 										<time>' . '&nbsp;' . '</time>
 										<a href="ajax/ajax-remove.php?id=' . $value2[0] . '" data-id="' . $value2[0] . '" class="remove">Remove</a>
 										<a href="inspiration/type/' . $value2[1] . '/view.html" alt="' . $value2[2] . '">
-											<img src="http://www.restylesource.com' . $value2[4] . '" />
+											<img src="http://dev.restylesource.com' . $value2[4] . '" />
 											<h2>' . $value2[2] . '</h2>
 										</a>
 									</li>';
@@ -121,7 +121,7 @@
 								<time>' . '&nbsp;' . '</time>
 								<a href="ajax/ajax-remove.php?id=' . $value[0] . '" data-id="' . $value[0] . '" class="remove">Remove</a>
 								<a href="/sources/' . seo_friendly($value[2]) . '/' . seo_friendly($value[1]) . '/" alt="' . $value[2] . '">
-									<img src="http://www.restylesource.com' . $value[4]. '" />
+									<img src="http://dev.restylesource.com' . $value[4]. '" />
 									<h2>' . $value[2] . '</h2>
 								</a>
 							</li>';
@@ -160,7 +160,7 @@
 									<time>' . '&nbsp;' . '</time>
 									<a href="ajax/ajax-remove.php?id=' . $value[0] . '" data-id="' . $value[0] . '" class="remove">Remove</a>
 									<a href="/product/' . seo_friendly($value[2]) . '/' . $value[1] . '/" alt="' . $value[2] . '">
-										<img src="http://www.restylesource.com' . $value[4]. '" />
+										<img src="http://dev.restylesource.com' . $value[4]. '" />
 										<h2>' . $value[2] . '</h2>
 									</a>
 								</li>';

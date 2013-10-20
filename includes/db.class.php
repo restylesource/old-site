@@ -11,7 +11,7 @@ class Db
     var $user;
     /// the password to use
     var $password;
-    
+ 
 	var $on_error = 'report';
 
 
@@ -27,14 +27,14 @@ class Db
 	function Db($oe = 'report')
 	{
 		global $DB_HOST, $DB_USER, $DB_PASSWD, $DB_DBNAME;
-      
+
 		$this->on_error = $oe;
 
         $this->server = $DB_HOST;
         $this->dbname = $DB_DBNAME;
         $this->user = $DB_USER;
         $this->password = $DB_PASSWD;
-		
+
 		$this->connect();
 
 	}
@@ -51,7 +51,7 @@ class Db
 
         $this->connection = @mysql_pconnect( $this->server, $this->user, $this->password )
             or $this->error( "could not connect to the database server ($this->server, $this->user)." );
-        
+
         @mysql_select_db( $this->dbname )
             or $this->error( "could not select the database ($this->DB)." );
 	}
@@ -69,7 +69,6 @@ class Db
 		return $this->queryresult;
 	}
 
-	
 	// js, 2001.07.10, array -> assoc
 	function get_array()
 	{
@@ -126,7 +125,6 @@ class Db
 			return false;
 		}
 	}
-	
 	/*!
 		is query result set valid ?
 	*/

@@ -61,7 +61,7 @@ function my_redirect($link, $secure = 0) {
 		}
 	}
 	
-	$link = $http . $_SERVER ['SERVER_NAME'] . "/" . $link;
+	$link = $http . $_SERVER['SERVER_NAME'] . "/" . $link;
 	
 	if (! headers_sent ()) {
 		header ( 'Location:' . $link );

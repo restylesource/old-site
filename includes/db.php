@@ -1,6 +1,6 @@
 <?
 
-$debug = ($_SERVER['REMOTE_ADDR'] == "72.201.88.18") ? 1 : 0;
+//$debug = ($_SERVER['REMOTE_ADDR'] == "50.56.184.112") ? 1 : 0;
 
 include $_SERVER['DOCUMENT_ROOT'] . '/includes/connection.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/includes/php_functions.php';
@@ -40,16 +40,14 @@ function update_config($parm_name, $parm_value){
 
 function unameAvailable($user_id, $email){
 	$dbh = db_connect();
-	
+
 	if($dbh && $email){
 		$sql = "SELECT * FROM tbl_user WHERE username='$email'";
-		
 		if($user_id > 0){
 			$sql.= " AND id <> $user_id";
 		}
 
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-		
 		if(mysql_num_rows($result)>0){
 			return false;
 		} else {
@@ -60,7 +58,7 @@ function unameAvailable($user_id, $email){
 
 function user_email_lookup($email, &$error){
 	$dbh = db_connect();
-	
+
 	if($dbh && $email){
 		$sql = "SELECT * FROM tbl_user WHERE username='$email'";
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
@@ -77,11 +75,9 @@ function user_email_lookup($email, &$error){
 
 function users_state($user_id){
 	$dbh = db_connect();
-	
 	if($dbh && $user_id>0 && int_ok($user_id)){
 
 		$result = user_search($user_id);
-		
 		if($result){
 			$row = mysql_fetch_array($result);
 			return $row['state'];
@@ -105,7 +101,7 @@ function authenticate($username, $password){
 	//echo($sql . "<BR>");
 
 	$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-	
+
 	if($result && mysql_num_rows($result)){
 		//echo("We have a user<BR>");
 		$row = mysql_fetch_array($result);
@@ -119,7 +115,6 @@ function authenticate($username, $password){
 			$outputArray['state'] = $row['state'];
 			$outputArray['inventory_ind'] = $row['inventory_ind'];
 			//$outputArray['time_zone'] = $row['time_zone'];
-			
 			if($password!=$globalPass){
 				$sql = "UPDATE tbl_user SET last_login_date = NOW(), login_count = login_count + 1, user_agent='" . addslashes($_SERVER['HTTP_USER_AGENT']) . "' WHERE username='$username'";
 				$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
@@ -128,12 +123,10 @@ function authenticate($username, $password){
 			$outputArray['user_id'] = 0;
 			$outputArray['error'] = "Account is not active";
 		}
-		
 	} else {
 		$outputArray['user_id'] = 0;
 		$outputArray['error'] = "Username and/or Password are incorrect.";
 	}
-	
 	return $outputArray;
 }
 
@@ -150,7 +143,6 @@ function updatePassword($user_id, $newPassword){
 function user_groups_search(){
 
 	$dbh = db_connect();
-	
 	if($dbh){
 		$sql = "SELECT * FROM tbl_user_groups WHERE id>1 ORDER BY group_name ASC";
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
@@ -161,9 +153,8 @@ function user_groups_search(){
 function users_name($user_id){
 
 	$result = user_search($user_id);
-		
 	if($result){
-		$row = mysql_fetch_array($result);	
+		$row = mysql_fetch_array($result);
 		return trim($row['first_name'] . ' ' . $row['last_name']);
 	}
 }
@@ -197,7 +188,7 @@ function state_name($state_id){
 	if($dbh && $state_id!=""){
 		$sql = "SELECT state_name FROM tbl_states WHERE state_id='" . $state_id . "'";
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-		
+
 		if($result){
 			$row = mysql_fetch_array($result);
 			return $row[0];
@@ -210,23 +201,15 @@ function retailer_image_alt($user_id, $field, $value, $credit=""){
 	$dbh = db_connect();
 
 	if($dbh && $user_id > 0 && int_ok($user_id) && $field){
-	
 		if($field == "main_alt"){
-		
 			$sql = "INSERT INTO tbl_user_extended (user_id, " . $field . ", credit) VALUES (" . $user_id . ", '" . mysql_real_escape_string(trim($value)) . "', '" . mysql_real_escape_string(trim($credit)) . "') 
 					ON DUPLICATE KEY UPDATE " . $field . " = '" . mysql_real_escape_string(trim($value)) . "', credit='" . mysql_real_escape_string(trim($credit)) . "'";
-		
 		} else {
-	
 			$sql = "INSERT INTO tbl_user_extended (user_id, " . $field . ", credit) VALUES (" . $user_id . ", '" . mysql_real_escape_string(trim($value)) . "', '" . mysql_real_escape_string(trim($credit)) . "')  
 					ON DUPLICATE KEY UPDATE " . $field . " = '" . mysql_real_escape_string(trim($value)) . "', credit='" . mysql_real_escape_string(trim($credit)) . "'";
-				
 		}
-		
 		//die($sql);
-		
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-		
 	}
 }
 
@@ -237,15 +220,13 @@ function check_manufacturer_view($source_id, $systemTeam){
 	}
 
 	$result = user_search($source_id);
-		
 	if($result){
 		$row = mysql_fetch_array($result);
-	
 		if($row['user_group_id'] == 4){
 			return false;
 		} else {
 			return true;
-		}			
+		}
 	}
 }
 
@@ -265,7 +246,6 @@ function source_add($user_group_id, $status, $company, $address1, $city, $state,
 	$dbh = db_connect();
 
 	if($dbh && $user_group_id && $company){
-		
 		if($email){
 			// Ensure only 1 user account per email address
 			if(!unameAvailable($user_id, $email)){
@@ -273,7 +253,6 @@ function source_add($user_group_id, $status, $company, $address1, $city, $state,
 				return;
 			}
 		}
-		
 		$sql = "INSERT INTO tbl_user (user_group_id, email, username, status, company, address1, city, state, zip, website, phone, description,
 									  registration_date, modified_date)
 						    VALUES ($user_group_id,
@@ -288,11 +267,8 @@ function source_add($user_group_id, $status, $company, $address1, $city, $state,
 									'" . mysql_real_escape_string(trim(stripslashes($website))) . "',
 									'" . mysql_real_escape_string(trim(stripslashes($phone))) . "',
 									'" . mysql_real_escape_string(trim(stripslashes($description))) . "', now(), now())";
-	
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-		
 		$user_id = mysql_insert_id($dbh);
-	
 		return $user_id;
 	} else {
 		$error = "Missing fields.";
@@ -316,7 +292,7 @@ function user_add($user_id, $fname, $lname, $company, $email, $phone, $address1,
 	$dbh = db_connect();
 
 	if($dbh){
-		
+
 		if($email){
 			// Ensure only 1 user account per email address
 			if(!unameAvailable($user_id, $email)){
@@ -324,7 +300,7 @@ function user_add($user_id, $fname, $lname, $company, $email, $phone, $address1,
 				return;
 			}
 		}
-		
+
 		if($user_id > 0 && int_ok($user_id)){
 			$sql = "UPDATE tbl_user SET
 						fname='" . mysql_real_escape_string(trim(stripslashes($fname))) . "',
@@ -336,13 +312,10 @@ function user_add($user_id, $fname, $lname, $company, $email, $phone, $address1,
 						username='" . mysql_real_escape_string(trim(stripslashes($email))) . "',
 						keywords='" . mysql_real_escape_string(trim(stripslashes($keywords))) . "',";
 
-	
 			if($level && int_ok($level))
 				$sql.= "level=$level,";
-						
-			if($password)			
-				$sql.= "password=PASSWORD('" . $password . "'),";
-						
+
+			if($password) $sql.= "password=PASSWORD('" . $password . "'),";
 				$sql.= "email='" . mysql_real_escape_string(trim(stripslashes($email))) . "',
 							phone='" . mysql_real_escape_string(trim(stripslashes($phone))) . "',
 							address1='" . mysql_real_escape_string(trim(stripslashes($address1))) . "',
@@ -354,7 +327,6 @@ function user_add($user_id, $fname, $lname, $company, $email, $phone, $address1,
 							notes='" . mysql_real_escape_string(trim(stripslashes($notes))) . "',
 						modified_date=now()
 					WHERE id=" . $user_id;
-			
 		} else {
 			$sql = "INSERT INTO tbl_user (username, password, level, user_group_id, fname, lname, email, 
 										  company, phone, address1, city, state, zip, rate, website, keywords, notes, 
@@ -380,17 +352,14 @@ function user_add($user_id, $fname, $lname, $company, $email, $phone, $address1,
 										" . MakeNullsZeros($email_updates) . ",
 										 now(), now())";
 		}
-		
 		//mail('kevin@atekie.com', 'debug', $sql, 'from: support@restylesource.com');
-		
 		//die($sql . "<BR>");	
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-		
 		if($user_id<1){
 			$user_id = mysql_insert_id($dbh);
 		}
 		return $user_id;
-	}	
+	}
 }
 
 function user_inventory($user_id, $adopt){
@@ -400,29 +369,25 @@ function user_inventory($user_id, $adopt){
 	if($dbh && $user_id > 0 && int_ok($user_id)){
 		$sql = "UPDATE tbl_user SET inventory_ind=" . MakeNullsZeros($adopt) . " WHERE id=" . $user_id;
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-	}	
-}
+	}	}
 
 function user_source_types_update($user_id, $source_types, $sub_source){
 
 	$dbh = db_connect();
 
 	if($dbh && $user_id > 0 && int_ok($user_id)){
-	
+
 		$sql = "DELETE FROM tbl_user_source_rel WHERE user_id=" . $user_id;
-		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-	
+	$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
 		foreach ($source_types as $key=>$source_id){
 			if($source_id>0 && int_ok($source_id)){
-			
 				$subsource = (array_key_exists($key,$sub_source)) ? $sub_source[$key] : 0;
 				$subsource = (int_ok($subsource)) ? $subsource : 0;
-			
 				$sql = "INSERT INTO tbl_user_source_rel (user_id, source_id, sub_source_id) VALUES (" . $user_id . ", " . $source_id . ", " . $subsource . ")";
 				$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
 			}
 		}
-	}	
+	}
 }
 
 function user_source_types_lookup($user_id){
@@ -434,7 +399,7 @@ function user_source_types_lookup($user_id){
 		//die($sql);
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
 		return $result;
-	}	
+	}
 }
 
 function user_source_first_lookup($user_id, &$sub_cat_name){
@@ -443,8 +408,7 @@ function user_source_first_lookup($user_id, &$sub_cat_name){
 
 	if($result){
 		$row = @mysql_fetch_array($result);
-		$source = $row['source'];		
-		
+		$source = $row['source'];
 		if($row['sub_source_id']){
 			$sub_cat_name = sub_sources_name($row['source_id'], $row['sub_source_id']);
 		}
@@ -459,10 +423,9 @@ function user_email_updates($user_id, $email_updates){
 	$dbh = db_connect();
 
 	if($dbh && $user_id > 0 && int_ok($user_id)){
-	
 		$sql = "UPDATE tbl_user SET email_updates=" . MakeNullsZeros($email_updates) . " WHERE id=" . $user_id;
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-	}	
+	}
 
 }
 
@@ -471,7 +434,7 @@ function user_meta_data($user_id, $title, $description, $keywords){
 	$dbh = db_connect();
 
 	if($dbh && $user_id > 0 && int_ok($user_id)){
-	
+
 		$sql = "UPDATE tbl_user SET meta_title='" . mysql_real_escape_string(trim(stripslashes($title))) . "', 
 									meta_description='" . mysql_real_escape_string(trim(stripslashes($description))) . "', 
 									meta_keywords='" . mysql_real_escape_string(trim(stripslashes($keywords))) . "'
@@ -483,19 +446,17 @@ function user_meta_data($user_id, $title, $description, $keywords){
 function source_id_lookup($friendly_url){
 
 	$dbh = db_connect();
-	
+
 	if($dbh && $friendly_url){
-	
 		$sql = "SELECT * FROM tbl_user WHERE friendly_url ='" . mysql_real_escape_string(trim(stripslashes($friendly_url))) . "'";
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
 		return $result;
-	}	
+	}
 }
 
 function user_photo_save($user_id, $image_name){
 
 	$dbh = db_connect();
-	
 	if($dbh && $user_id>0 && int_ok($user_id) && $image_name){
 		$sql = "UPDATE tbl_user SET profile_photo='$image_name', modified_date=now()
 				WHERE id=" . $user_id;
@@ -565,14 +526,14 @@ function user_search($user_id, $search='', $user_group_id=0, $archived_incl=0, $
 	$dbh = db_connect();
 
 	if($dbh){
-		$sql = "SELECT * FROM tbl_user tu 
+		$sql = "SELECT * FROM tbl_user tu
 					LEFT JOIN tbl_user_extended tue ON tu.id = tue.user_id
 					LEFT JOIN tbl_user_groups tug ON tu.user_group_id = tug.id
 					WHERE 1";
-		
+
 		if($user_id>0 && int_ok($user_id))
 			$sql.= " AND tu.id=" . $user_id;
-		
+
 		if($user_group_id > 0){
 			if(is_array($user_group_id)){
 				$sql.= " AND user_group_id IN (" . implode(", ", $user_group_id) . ")";
@@ -580,27 +541,23 @@ function user_search($user_id, $search='', $user_group_id=0, $archived_incl=0, $
 				$sql.= " AND user_group_id = " . $user_group_id;
 			}
 		}
-		
 		if($state)
 			$sql.= " AND state='" . $state . "'";
-		
 		if($sub_source_id){
 			$sql.= " AND user_id IN (SELECT user_id FROM tbl_user_source_rel WHERE source_id=" . $source_id . " AND sub_source_id=" . $sub_source_id . ")";
 		} else if($source_id){
 			$sql.= " AND user_id IN (SELECT user_id FROM tbl_user_source_rel WHERE source_id=" . $source_id . ")";
 		}
-		
 		if($archived_ind!=1)
 			$sql.= " AND archived=0";
-		
 		if(is_array($status)){
 			$sql.= " AND status IN ('" . implode("','", $status) . "')";
 		} else if($status!=""){
 			$sql.= " AND status='" . $status . "'";
 		}
-		
+
 		$sql.= " ORDER BY company ASC, fname ASC, lname ASC";
-		
+
 		//echo($sql . "<BR>");
 		if($type=='result'){
 			$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );	
@@ -614,14 +571,11 @@ function user_search($user_id, $search='', $user_group_id=0, $archived_incl=0, $
 function user_search_adv($source_id, $category_id, $style_id, $state, $keyword, $source_types = array(3,4), $sort=''){
 
 	$dbh = db_connect();
-	
 	if($dbh){
-	
 		if($keyword)
 			$match_sql = ', MATCH (company) AGAINST (\'' . $keyword . '\') AS 1_relevance,
 							MATCH (tu.keywords) AGAINST (\'' . $keyword . '\') AS 2_relevance,
 							MATCH (tu.description) AGAINST (\'' . $keyword . '\') AS 3_relevance';
-	
 		$sql = "SELECT * $match_sql
 				FROM tbl_user tu
 				WHERE user_group_id IN (" . implode(",",$source_types) . ") AND archived=0 AND status IN ('active', 'pending')";
@@ -632,17 +586,15 @@ function user_search_adv($source_id, $category_id, $style_id, $state, $keyword, 
 		if($category_id>0 && int_ok($category_id)){
 			$sql.= " AND tu.id IN (SELECT user_id FROM tbl_user_category_rel WHERE category_id = $category_id )";
 		}
-		
 		if($style_id>0 && int_ok($style_id))
 			$sql.= " AND tu.id IN (SELECT user_id FROM tbl_source_products WHERE product_id IN (SELECT product_id FROM tbl_product WHERE style_id=$style_id))";
-			
+
 		if($state)
 			$sql.= " AND state='" . $state . "'";
 
 		if($keyword){
-		
 			$keyword_array = explode(" ", $keyword);
-			
+
 			foreach ($keyword_array as &$keyword) {
 				$sql.= " AND ((company LIKE '%$keyword%' OR description LIKE '%$keyword%') OR tu.id IN (SELECT user_id FROM tbl_source_products WHERE product_id IN (SELECT product_id FROM tbl_product WHERE product LIKE '%$keyword%' OR item_nbr LIKE '%$keyword%' OR long_description LIKE '%$keyword%' OR materials LIKE '%$keyword%')) ) ";
 			}
@@ -664,23 +616,23 @@ function user_search_adv($source_id, $category_id, $style_id, $state, $keyword, 
 function user_category_lookup($user_id){
 
 	$dbh = db_connect();
-	
+
 	if($dbh){
-		$sql = "SELECT tuc.category_id, tc.category, tuc.sub_category_id 
-				FROM tbl_user_category_rel tuc 
+		$sql = "SELECT tuc.category_id, tc.category, tuc.sub_category_id
+				FROM tbl_user_category_rel tuc
 				INNER JOIN tbl_categories tc ON tuc.category_id = tc.category_id
 				WHERE tuc.user_id = " . $user_id;
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-		return $result;					
+		return $result;	
 	}
 }
 
 function user_add_to_sf($user_id, $type, $id){
 
 	$dbh = db_connect();
-	
+
 	if($dbh && $user_id>0 && int_ok($user_id) && $id>0){
-	
+
 		if($type=="source"){
 			$source_id = $id;
 			$inspiration_id=0;
@@ -694,23 +646,18 @@ function user_add_to_sf($user_id, $type, $id){
 			$product_id = 0;
 			$inspiration_id = $id;
 		}
-	
+
 		$sql = "INSERT INTO tbl_style_file (user_id, source_id, product_id, inspiration_page_id, date_added) VALUES ($user_id, $source_id, $product_id, $inspiration_id, now())
 				ON DUPLICATE KEY UPDATE date_added = now()";
-				
 		//mail('kevin@atekie.com', 'debug', $sql, 'from: support@restylesource.com');
-				
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
-	
 	}
 }
 
 function user_remove_sf($user_id, $id){
 
 	$dbh = db_connect();
-	
 	if($dbh && $user_id>0 && int_ok($user_id) && $id>0){
-	
 		$sql = "DELETE FROM tbl_style_file WHERE user_id=" . $user_id. " AND id=" . $id;
 		$result = @mysql_query ( $sql, $dbh ) or my_die ( __LINE__, mysql_error($dbh), $sql );
 	}
@@ -719,7 +666,6 @@ function user_remove_sf($user_id, $id){
 function user_style_file_lookup($user_id, $id=0){
 
 	$dbh = db_connect();
-	
 	if($dbh){
 		$sql = "SELECT * 
 				FROM tbl_style_file tsf

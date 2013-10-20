@@ -6,7 +6,7 @@
 	
 	$section = "archives";
 
-	$inspiration_image_path = 'http://www.restylesource.com/inspiration-photos/';
+	$inspiration_image_path = 'http://dev.restylesource.com/inspiration-photos/';
 
 	$row_width  = 3;
 	$row_length = 5;

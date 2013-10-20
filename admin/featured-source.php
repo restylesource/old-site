@@ -34,8 +34,8 @@
 </head>
 <body>
 <div class="container">   
-	<?php include("includes/header.php"); ?>
-	<?php include("includes/nav.php"); ?>
+	<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"); //include("includes/header.php"); ?>
+	<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/nav.php"); //include("includes/nav.php"); ?>
 	<div class="breadcrumbs">
 		<ul>
 			<li class="home"><a href="/admin"></a></li>

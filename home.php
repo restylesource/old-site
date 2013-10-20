@@ -22,7 +22,7 @@
 		$meta_description = $row['meta_description'];
 		$meta_keywords = $row['meta_keywords'];
 		
-		if($row['image1_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image1_id'] . "_hero.jpg") || (fopen('http://www.restylesource.com' . $image_path . $row['image1_id'] . "_hero.jpg", "r") ))){
+		if($row['image1_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image1_id'] . "_hero.jpg") || (fopen('http://dev.restylesource.com' . $image_path . $row['image1_id'] . "_hero.jpg", "r") ))){
 	
 			$page_result = page_lookup($row['image1_id']);
 			$row2 = @mysql_fetch_array($page_result);
@@ -32,13 +32,13 @@
 			$image1_cta = ($row['image1_cta']) ? "<p><span>" . $row['image1_cta'] . " ></span></p>" : "";
 	
 			$slideshow_output .= '<a href="inspiration/' . seo_friendly($row2['inspiration']) . '/' . seo_friendly(sub_inspiration_name($row2['sub_inspiration_id'])) . '/' . seo_friendly($row2['page_title']) . '/' . $row['image1_id'] . '/" title="' . $page_title . '">
-										<img src="http://www.restylesource.com' . $image_path . $row['image1_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
+										<img src="http://dev.restylesource.com' . $image_path . $row['image1_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
 										<p><span><span>' . $row['image1_caption_1'] . '</span><span>' . $row['image1_caption_2'] . '</span></p>
 										' . $image1_cta . '
 									</a>';
 		}
 		
-		if($row['image2_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image2_id'] . "_hero.jpg") || (fopen('http://www.restylesource.com' . $image_path . $row['image2_id'] . "_hero.jpg", "r") ))){
+		if($row['image2_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image2_id'] . "_hero.jpg") || (fopen('http://dev.restylesource.com' . $image_path . $row['image2_id'] . "_hero.jpg", "r") ))){
 	
 			$page_result = page_lookup($row['image2_id']);
 			$row2 = @mysql_fetch_array($page_result);
@@ -47,13 +47,13 @@
 
 			inspiration_title_alt_tags($row['image2_id'], $title, $alt);
 			$slideshow_output .= '<a href="inspiration/' . seo_friendly($row2['inspiration']) . '/' . seo_friendly(sub_inspiration_name($row2['sub_inspiration_id'])) . '/' . seo_friendly($row2['page_title']) . '/' . $row['image2_id'] . '/" title="' . $title . '">
-										<img src="http://www.restylesource.com' . $image_path . $row['image2_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
+										<img src="http://dev.restylesource.com' . $image_path . $row['image2_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
 										<p><span><span>' . $row['image2_caption_1'] . '</span><span>' . $row['image2_caption_2'] . '</span></p>
 										' . $image2_cta . '
 									</a>';
 		}
 		
-		if($row['image3_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image3_id'] . "_hero.jpg") || (fopen('http://www.restylesource.com' . $image_path . $row['image3_id'] . "_hero.jpg", "r") ))){
+		if($row['image3_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image3_id'] . "_hero.jpg") || (fopen('http://dev.restylesource.com' . $image_path . $row['image3_id'] . "_hero.jpg", "r") ))){
 		
 			$page_result = page_lookup($row['image3_id']);
 			$row2 = @mysql_fetch_array($page_result);
@@ -62,13 +62,13 @@
 			
 			inspiration_title_alt_tags($row['image3_id'], $title, $alt);
 			$slideshow_output .= '<a href="inspiration/' . seo_friendly($row2['inspiration']) . '/' . seo_friendly(sub_inspiration_name($row2['sub_inspiration_id'])) . '/' . seo_friendly($row2['page_title']) . '/' . $row['image3_id'] . '/" title="' . $title . '">
-										<img src="http://www.restylesource.com' . $image_path . $row['image3_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
+										<img src="http://dev.restylesource.com' . $image_path . $row['image3_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
 										<p><span><span>' . $row['image3_caption_1'] . '</span><span>' . $row['image3_caption_2'] . '</span></p>
 										' . $image3_cta . '
 									</a>';
 		}		
 		 
-		if($row['image4_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image4_id'] . "_hero.jpg") || (fopen('http://www.restylesource.com' . $image_path . $row['image4_id'] . "_hero.jpg", "r") ))){
+		if($row['image4_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image4_id'] . "_hero.jpg") || (fopen('http://dev.restylesource.com' . $image_path . $row['image4_id'] . "_hero.jpg", "r") ))){
 		
 			$page_result = page_lookup($row['image4_id']);
 			$row2 = @mysql_fetch_array($page_result);
@@ -77,13 +77,13 @@
 		
 			inspiration_title_alt_tags($row['image4_id'], $title, $alt);
 			$slideshow_output .= '<a href="inspiration/' . seo_friendly($row2['inspiration']) . '/' . seo_friendly(sub_inspiration_name($row2['sub_inspiration_id'])) . '/' . seo_friendly($row2['page_title']) . '/' . $row['image4_id'] . '/" title="' . $title . '">
-										<img src="http://www.restylesource.com' . $image_path . $row['image4_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
+										<img src="http://dev.restylesource.com' . $image_path . $row['image4_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
 										<p><span><span>' . $row['image4_caption_1'] . '</span><span>' . $row['image4_caption_2'] . '</span></p>
 										' . $image4_cta . '
 									</a>';
 		}		
 
-		if($row['image5_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image5_id'] . "_hero.jpg") || (fopen('http://www.restylesource.com' . $image_path . $row['image5_id'] . "_hero.jpg", "r") ))){
+		if($row['image5_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image5_id'] . "_hero.jpg") || (fopen('http://dev.restylesource.com' . $image_path . $row['image5_id'] . "_hero.jpg", "r") ))){
 		
 			$page_result = page_lookup($row['image5_id']);
 			$row2 = @mysql_fetch_array($page_result);
@@ -92,13 +92,13 @@
 		
 			inspiration_title_alt_tags($row['image5_id'], $title, $alt);
 			$slideshow_output .= '<a href="inspiration/' . seo_friendly($row2['inspiration']) . '/' . seo_friendly(sub_inspiration_name($row2['sub_inspiration_id'])) . '/' . seo_friendly($row2['page_title']) . '/' . $row['image5_id'] . '/" title="' . $title . '">
-										<img src="http://www.restylesource.com' . $image_path . $row['image5_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
+										<img src="http://dev.restylesource.com' . $image_path . $row['image5_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
 										<p><span><span>' . $row['image5_caption_1'] . '</span><span>' . $row['image5_caption_2'] . '</span></p>
 										' . $image5_cta . '
 									</a>';
 		}
 
-		if($row['image6_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image6_id'] . "_hero.jpg") || (fopen('http://www.restylesource.com' . $image_path . $row['image6_id'] . "_hero.jpg", "r") ))){
+		if($row['image6_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image6_id'] . "_hero.jpg") || (fopen('http://dev.restylesource.com' . $image_path . $row['image6_id'] . "_hero.jpg", "r") ))){
 		
 			$page_result = page_lookup($row['image6_id']);
 			$row2 = @mysql_fetch_array($page_result);
@@ -107,13 +107,13 @@
 		
 			inspiration_title_alt_tags($row['image6_id'], $title, $alt);
 			$slideshow_output .= '<a href="inspiration/' . seo_friendly($row2['inspiration']) . '/' . seo_friendly(sub_inspiration_name($row2['sub_inspiration_id'])) . '/' . seo_friendly($row2['page_title']) . '/' . $row['image6_id'] . '/" title="' . $title . '">
-										<img src="http://www.restylesource.com' . $image_path . $row['image6_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
+										<img src="http://dev.restylesource.com' . $image_path . $row['image6_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
 										<p><span><span>' . $row['image6_caption_1'] . '</span><span>' . $row['image6_caption_2'] . '</span></p>
 										' . $image6_cta . '
 									</a>';
 		}
 		
-		if($row['image7_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image7_id'] . "_hero.jpg") || (fopen('http://www.restylesource.com' . $image_path . $row['image7_id'] . "_hero.jpg", "r") ))){
+		if($row['image7_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image7_id'] . "_hero.jpg") || (fopen('http://dev.restylesource.com' . $image_path . $row['image7_id'] . "_hero.jpg", "r") ))){
 		
 			$page_result = page_lookup($row['image7_id']);
 			$row2 = @mysql_fetch_array($page_result);
@@ -122,13 +122,13 @@
 		
 			inspiration_title_alt_tags($row['image7_id'], $title, $alt);
 			$slideshow_output .= '<a href="inspiration/' . seo_friendly($row2['inspiration']) . '/' . seo_friendly(sub_inspiration_name($row2['sub_inspiration_id'])) . '/' . seo_friendly($row2['page_title']) . '/' . $row['image7_id'] . '/" title="' . $title . '">
-										<img src="http://www.restylesource.com' . $image_path . $row['image7_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
+										<img src="http://dev.restylesource.com' . $image_path . $row['image7_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
 										<p><span><span>' . $row['image7_caption_1'] . '</span><span>' . $row['image7_caption_2'] . '</span></p>
 										' . $image7_cta . '
 									</a>';
 		}
 		
-		if($row['image8_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image8_id'] . "_hero.jpg") || (fopen('http://www.restylesource.com' . $image_path . $row['image8_id'] . "_hero.jpg", "r") ))){
+		if($row['image8_id'] > 0 && (file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path . $row['image8_id'] . "_hero.jpg") || (fopen('http://dev.restylesource.com' . $image_path . $row['image8_id'] . "_hero.jpg", "r") ))){
 		
 			$page_result = page_lookup($row['image8_id']);
 			$row2 = @mysql_fetch_array($page_result);
@@ -137,7 +137,7 @@
 		
 			inspiration_title_alt_tags($row['image8_id'], $title, $alt);
 			$slideshow_output .= '<a href="inspiration/' . seo_friendly($row2['inspiration']) . '/' . seo_friendly(sub_inspiration_name($row2['sub_inspiration_id'])) . '/' . seo_friendly($row2['page_title']) . '/' . $row['image8_id'] . '/" title="' . $title . '">
-										<img src="http://www.restylesource.com' . $image_path . $row['image8_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
+										<img src="http://dev.restylesource.com' . $image_path . $row['image8_id'] . "_hero.jpg" . '" alt="' . $alt . '" />
 										<p><span><span>' . $row['image8_caption_1'] . '</span><span>' . $row['image8_caption_2'] . '</span></p>
 										' . $image8_cta . '
 									</a>';
@@ -238,20 +238,20 @@
 
 		//die($block_img_path . 'block_1_img.jpg');
 
-		if(file_exists($block_img_path . 'block_1_img.jpg') || fopen('http://www.restylesource.com/' . $block_img_path . 'block_1_img.jpg', "r") )
-			$block_img_1 = 'http://www.restylesource.com/' . $block_img_path . 'block_1_img.jpg';
+		if(file_exists($block_img_path . 'block_1_img.jpg') || fopen('http://dev.restylesource.com/' . $block_img_path . 'block_1_img.jpg', "r") )
+			$block_img_1 = 'http://dev.restylesource.com/' . $block_img_path . 'block_1_img.jpg';
 
-		if(file_exists($block_img_path . 'block_2_img.jpg') || fopen('http://www.restylesource.com/' . $block_img_path . 'block_2_img.jpg', "r") )
-			$block_img_2 = 'http://www.restylesource.com/' . $block_img_path . 'block_2_img.jpg';
+		if(file_exists($block_img_path . 'block_2_img.jpg') || fopen('http://dev.restylesource.com/' . $block_img_path . 'block_2_img.jpg', "r") )
+			$block_img_2 = 'http://dev.restylesource.com/' . $block_img_path . 'block_2_img.jpg';
 			
-		if(file_exists($block_img_path . 'block_3_img.jpg') || fopen('http://www.restylesource.com/' . $block_img_path . 'block_3_img.jpg', "r") )
-			$block_img_3 = 'http://www.restylesource.com/' . $block_img_path . 'block_3_img.jpg';			
+		if(file_exists($block_img_path . 'block_3_img.jpg') || fopen('http://dev.restylesource.com/' . $block_img_path . 'block_3_img.jpg', "r") )
+			$block_img_3 = 'http://dev.restylesource.com/' . $block_img_path . 'block_3_img.jpg';			
 
-		if(file_exists($block_img_path . 'block_4_img.jpg') || fopen('http://www.restylesource.com/' . $block_img_path . 'block_4_img.jpg', "r") )
-			$block_img_4 = 'http://www.restylesource.com/' . $block_img_path . 'block_4_img.jpg';
+		if(file_exists($block_img_path . 'block_4_img.jpg') || fopen('http://dev.restylesource.com/' . $block_img_path . 'block_4_img.jpg', "r") )
+			$block_img_4 = 'http://dev.restylesource.com/' . $block_img_path . 'block_4_img.jpg';
 
-		if(file_exists($block_img_path . 'bottom_banner_img.jpg') || fopen('http://www.restylesource.com/' . $block_img_path . 'block_5_img.jpg', "r") )
-			$bottom_banner_img = 'http://www.restylesource.com/' . $block_img_path . 'bottom_banner_img.jpg';
+		if(file_exists($block_img_path . 'bottom_banner_img.jpg') || fopen('http://dev.restylesource.com/' . $block_img_path . 'block_5_img.jpg', "r") )
+			$bottom_banner_img = 'http://dev.restylesource.com/' . $block_img_path . 'bottom_banner_img.jpg';
 	
 	}
 	

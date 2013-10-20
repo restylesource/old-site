@@ -144,7 +144,7 @@
 				
 				$carry_output.= '<li class="relative">
 									<a href="/sources/' . seo_friendly($source_row['company']) . '/' . $source_row[0] . '/">
-										<img src="http://www.restylesource.com' . $source_image_directory . $source_row[0] . '_thumb.jpeg" />
+										<img src="http://dev.restylesource.com' . $source_image_directory . $source_row[0] . '_thumb.jpeg" />
 									</a>
 									<a href="#" class="add-to-sf ' . $this_sf_class . '" data-type="source" data-id="' . $source_row[0] . '" title="Add to Style File">Add to Style File</a>
 									<h3>' . $source_row['company'] . '</h3>
@@ -223,7 +223,7 @@
 
 			<div id="featured-source">
 				<div class="image block featured">
-					<img src="http://www.restylesource.com/<?=$image_path.$image?>" alt="<?=$meta_title?>" />
+					<img src="http://dev.restylesource.com/<?=$image_path.$image?>" alt="<?=$meta_title?>" />
 					<a href="#" class="add-to-sf <?=$sf_product_class?>" data-type="product" data-id="<?=$_GET['id']?>" title="Add to Style File">Add to Style File</a>
 					<span class='st_facebook_hcount' displayText='Facebook'></span> <span class='st_twitter_hcount' displayText='Tweet'></span> <span class='st_pinterest_hcount' displayText='Pinterest'></span>
 				</div>

@@ -48,7 +48,7 @@
 			$product_image_result = product_image_search($_REQUEST['product_id'], 0, 1);
 			if($product_image_result){
 				$product_image_row = @mysql_fetch_array($product_image_result);
-				$image = 'http://www.restylesource.com/products/' . $product_image_row['image'];
+				$image = 'http://dev.restylesource.com/products/' . $product_image_row['image'];
 						
 			}
 			

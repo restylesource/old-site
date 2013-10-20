@@ -122,7 +122,7 @@
 								<time>' . $sf_array[3] . '</time>
 								' . $delete . '
 								<a href="' . $link . '" alt="' . $sf_array[2] . '">
-									<img src="http://www.restylesource.com' . $sf_array[4]. '" />
+									<img src="http://dev.restylesource.com' . $sf_array[4]. '" />
 									<h2>' . $sf_array[2] . '</h2>
 								</a>
 							</li>';

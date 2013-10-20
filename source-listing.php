@@ -136,7 +136,7 @@
 		
 		$look_output.= '<li>
 							<a href="/sources/' . seo_friendly($source_row['company']) . '/' . $source_row[0] . '/" title="' . $source_row['company'] . '">
-								<img src="http://www.restylesource.com' . $source_image_directory . $source_row[0] . '_thumb.jpeg' . '" alt="' . $source_row['main_alt'] . '" />
+								<img src="http://dev.restylesource.com' . $source_image_directory . $source_row[0] . '_thumb.jpeg' . '" alt="' . $source_row['main_alt'] . '" />
 							</a>
 							<a href="#" class="add-to-sf ' . $liked . '" data-type="source" data-id="' . $source_row[0] . '" title="Add to Style File">Add to Style File</a>';
 		

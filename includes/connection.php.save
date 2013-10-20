@@ -1,0 +1,8 @@
+<?
+	//Set DB Connection Info
+	$DB_HOST = 'localhost';
+	$DB_USER = 'restyle_sql';
+	$DB_PASSWD = 'LCBH!fM?l%8.'; //'XN01?&vLhw8?';
+	$DB_DBNAME = 'restyle_products';
+
+?>

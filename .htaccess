@@ -2,7 +2,7 @@ Options +FollowSymLinks
 RewriteEngine on
 
 
-RewriteRule ^source/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ \/source-listing.php?id=$2  [L,QSA]
+RewriteRule ^source/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ \/source-listing.php?id=$2  [L,QSA] 
 
 RewriteRule ^product/([^\s]+)/([a-zA-Z0-9_-]+)/$ \/product-detail.php?id=$2  [L,QSA]
 RewriteRule ^sources/([^\s]+)/([a-zA-Z0-9_-]+)/$ \/sources.php?id=$2  [L,QSA]

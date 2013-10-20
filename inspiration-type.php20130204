@@ -6,7 +6,7 @@
 	$section = "inspiration";
 
 	$image_base = '/home/restyle/public_html';
-	$image_path = 'http://www.restylesource.com/inspiration-photos/';
+	$image_path = 'http://dev.restylesource.com/inspiration-photos/';
 
 	$page_directory = $_SERVER['DOCUMENT_ROOT'] . '/assets/chunks/';
 	
@@ -311,7 +311,7 @@
 				
 					$source_type_output.= '<li>
 											<a href="' . $source_url . '">
-												<img src="http://www.restylesource.com/admin/source_images/' . $image .  '" alt="' . $alt . '" />
+												<img src="http://dev.restylesource.com/admin/source_images/' . $image .  '" alt="' . $alt . '" />
 											</a>
 											<h3>' . $source_type . '</h3>
 											</li>';

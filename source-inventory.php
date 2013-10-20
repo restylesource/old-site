@@ -90,7 +90,7 @@
 		
 			$output.= '<li class="relative">
 							<a href="/product/' . seo_friendly($row['product']) . '/' . $row['product_id'] . '/" title="' . $row['product'] . '">
-								<img src="http://www.restylesource.com/' . $photo_path . $product_image .  '" width=135 alt="' . $alt . '" />
+								<img src="http://dev.restylesource.com/' . $photo_path . $product_image .  '" width=135 alt="' . $alt . '" />
 							</a>
 							<a href="#" class="add-to-sf ' . $liked . '" data-type="product" data-id="' . $row['product_id'] . '" title="Add to Style File">Add to Style File</a>
 							<h3>' . $row['product'] . '</h3>';

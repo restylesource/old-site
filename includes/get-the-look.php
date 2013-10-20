@@ -55,7 +55,7 @@
 			
 			$designer_output.= '<li>
 							<a href="/product/' . seo_friendly($row['product']) . '/' . $row['product_id'] . '/">
-								<img src="http://www.restylesource.com/' . $photo_path . $product_image .  '" alt="' . $alt . '" />
+								<img src="http://dev.restylesource.com/' . $photo_path . $product_image .  '" alt="' . $alt . '" />
 							</a>
 							<a href="#" class="add-to-sf ' . $liked . '" data-type="product" data-id="' . $row['product_id'] . '" title="Add to Style File">Add to Style File</a>
 							<h3>' . $row['product'] . '</h3>';
@@ -152,7 +152,7 @@
 			
 			$output.= '<li>
 							<a href="/product/' . seo_friendly($row['product']) . '/' . $row['product_id'] . '/">
-								<img src="http://www.restylesource.com/' . $photo_path . $product_image .  '" alt="' . $alt . '" />
+								<img src="http://dev.restylesource.com/' . $photo_path . $product_image .  '" alt="' . $alt . '" />
 							</a>
 							<a href="#" class="add-to-sf ' . $liked . '" data-type="product" data-id="' . $row['product_id'] . '" title="Add to Style File">Add to Style File</a>
 							<h3>' . $row['product'] . '</h3>';
@@ -248,7 +248,7 @@
 			
 			$restyle_picks.= '<li>
 							<a href="/product/' . seo_friendly($row['product']) . '/' . $row['product_id'] . '/">
-								<img src="http://www.restylesource.com/' . $photo_path . $product_image .  '" alt="' . $alt . '" />
+								<img src="http://dev.restylesource.com/' . $photo_path . $product_image .  '" alt="' . $alt . '" />
 							</a>
 							<a href="#" class="add-to-sf ' . $liked . '" data-type="product" data-id="' . $row['product_id'] . '" title="Add to Style File">Add to Style File</a>
 							<h3>' . $row['product'] . '</h3>';

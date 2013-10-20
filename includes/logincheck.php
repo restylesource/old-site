@@ -7,29 +7,7 @@
 	//let's kill old sessions
 	$g_sess -> killold();
 
-	if($_REQUEST['action'] == "kill"){
-		$action = "kill";
-	}
-	
-	// HANDLES LOCATION FOR Menu
-	if($_POST['location_state']){
-		$g_sess -> set_var("location_state", $_POST['location_state']);
-		//setcookie("location_state", $_POST['location_state']);
-		//die($_POST['location_state']);
-		//my_redirect($_SERVER['PHP_SELF']);
-	}
-		
-	if($_POST['username'] && $_POST['password']){
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$action="make";
-	} else if($_COOKIE['username'] && $_COOKIE['password'] && $action!="kill"){
-		$username = decryptCookie($_COOKIE['username']);
-		$password = decryptCookie($_COOKIE['password']);
-		$action="make";
-	}
-
-	switch($action){
+		switch($action){
 	
 		case 'make':
 			if(trim($username) && trim($password)){
@@ -86,6 +64,30 @@
 			break;
 	
 	}
+
+	if($_REQUEST['action'] == "kill"){
+		//$action = "kill";
+	}
+	
+	// HANDLES LOCATION FOR Menu
+	if($_POST['location_state']){
+		$g_sess -> set_var("location_state", $_POST['location_state']);
+		//setcookie("location_state", $_POST['location_state']);
+		//die($_POST['location_state']);
+		//my_redirect($_SERVER['PHP_SELF']);
+	}
+		
+	if($_POST['username'] && $_POST['password']){
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$action = "make";
+	} else if($_COOKIE['username'] && $_COOKIE['password'] && $action!="kill"){
+		$username = decryptCookie($_COOKIE['username']);
+		$password = decryptCookie($_COOKIE['password']);
+		$action = "make";
+	}
+
+
 
 	if($require_login && $g_sess->get_var("user") == 0){
 	

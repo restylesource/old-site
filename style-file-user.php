@@ -99,7 +99,7 @@
 										<time>' . date_friendly($value2[3],0,1) . '</time>
 										' . $delete . '
 										<a href="/inspiration/' . seo_friendly(inspiration_name($key)) . '/' . seo_friendly(sub_inspiration_name($value2[5])) . '/' . seo_friendly($value2[2]) . '/' . $value2[1] . '/" alt="' . $value2[2] . '">
-											<img src="http://www.restylesource.com' . $value2[4] . '" />
+											<img src="http://dev.restylesource.com' . $value2[4] . '" />
 											<h2>' . $value2[2] . '</h2>
 										</a>
 									</li>';
@@ -137,7 +137,7 @@
 								<time>' . date_friendly($value[3],0,1) . '</time>
 								' . $delete . '
 								<a href="/sources/' . seo_friendly($value[2]) . '/' . $value[1] . '/" alt="' . $value[2] . '">
-									<img src="http://www.restylesource.com' . $value[4]. '" />
+									<img src="http://dev.restylesource.com' . $value[4]. '" />
 									<h2>' . $value[2] . '</h2>
 								</a>
 							</li>';
@@ -176,7 +176,7 @@
 									<time>' . date_friendly($value[3],0,1) . '</time>
 									' . $delete . '
 									<a href="/product/' . seo_friendly($value[2]) . '/' . $value[1] . '/" alt="' . $value[2] . '">
-										<img src="http://www.restylesource.com' . $value[4]. '" />
+										<img src="http://dev.restylesource.com' . $value[4]. '" />
 										<h2>' . $value[2] . '</h2>
 									</a>
 								</li>';

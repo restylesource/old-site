@@ -1,12 +1,12 @@
 <?php
-
+echo 'test:' .  $_REQUEST['id'];
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.php';	
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/logincheck.php';
+	//include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/logincheck.php';
 
 	$section = "inspiration";
 
 	$image_base = '/home/restyle/public_html';
-	$image_path = 'http://www.restylesource.com/inspiration-photos/';
+	$image_path = 'http://' . $_SERVER['HTTP_HOST'] . '/inspiration-photos/';
 
 	//Lookup categories
 	

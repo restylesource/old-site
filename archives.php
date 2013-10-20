@@ -5,7 +5,7 @@
 
 	$section = "archives";
 
-	$inspiration_image_path = 'http://www.restylesource.com/inspiration-photos/';
+	$inspiration_image_path = 'http://dev.restylesource.com/inspiration-photos/';
 
 	$result = page_search("active");
 	
@@ -82,12 +82,12 @@
 	<!--
 	FAVICON
 	--> 
-	<link rel="shortcut icon" href="/assets/images/favicon.gif" type="image/gif" /> 
+	<link rel="shortcut icon" href="<? echo $_SERVER['DOCUMENT_ROOT'] .  '/assets/images/favicon.gif'; ?>" type="image/gif" /> 
 
 	<!-- 
 	HEAD SCRIPTS
 	--> 
-	<script src="/assets/js/modernizr-2.5.3.js"></script>
+	<script src="<? echo $_SERVER['DOCUMENT_ROOT'] .  '/assets/js/modernizr-2.5.3.js'; ?>"></script>
 
 </head>
 

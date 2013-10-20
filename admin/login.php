@@ -1,4 +1,5 @@
 <?
+print "test";
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/db.php");	
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/includes/logincheck.php");
 	
