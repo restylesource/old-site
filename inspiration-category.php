@@ -1,5 +1,4 @@
 <?php
-print "hello " . $_GET[id];
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/db.php';
 	include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/logincheck.php';
 
